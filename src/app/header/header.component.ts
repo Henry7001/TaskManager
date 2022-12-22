@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import {Router} from '@angular/router';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-
+import {MatDialog} from '@angular/material/dialog';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
