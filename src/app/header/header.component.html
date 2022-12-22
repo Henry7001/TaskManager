@@ -2,12 +2,10 @@
   <mat-toolbar color="primary">
     <span style="margin: 10px;">Task Manager</span>
     <span class="example-spacer"></span>
-    <nav>
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Tutorial</a></li>
-      </ul>
-      <button mat-stroked-button color="primary">Iniciar Sesion</button>
-    </nav>
+    <span *ngIf="!username">Inicio</span>
+    <span *ngIf="!username">Tutorial</span>
+    <span>{{username}}</span>
+    <button *ngIf="username" mat-flat-button color="warn" (click)="openDialogLogout()" class="btn">Cerrar sesión</button>
+    <button *ngIf="!username" mat-stroked-button color="primary" (click)="openDialogLogin()">Iniciar Sesion</button>    
   </mat-toolbar>
 </header>

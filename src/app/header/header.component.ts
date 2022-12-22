@@ -8,11 +8,24 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
+  username: string='';
    constructor (
     private router : Router, private dialog: MatDialog) {}
     
-   openDialoLogin(){
-        this.dialog.open(LoginComponent)
+   openDialogLogin(){
+        //this.dialog.open(LoginComponent, {disableClose:true})
+        const dialogRef = this.dialog.open(LoginComponent, {data:{username:this.username}});
+
+        dialogRef.afterClosed().subscribe(result => {
+          this.router.navigate(['/dashboard']);
+          this.username=result;
+        });
    }
+
+   openDialogLogout(){
+    this.router.navigate(['/']);
+    this.username='';
+   }
+
+   
 }
