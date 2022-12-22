@@ -1,0 +1,66 @@
+/*.grid1{
+   /* background-image: url(https://media.istockphoto.com/id/177604696/es/foto/panel-de-corcho-de-fondo.jpg?s=612x612&w=0&k=20&c=z8Ddil_tc_UINvzhDOF3cDDY5Fo5Ql3ukNC875MO5C0=) ;
+}*/
+.grid1 h1{
+    font-weight: bold;
+    font-size:50px;
+    text-align: center;
+}
+.grid2{
+    background-image: url(imagenes/OrganizaTareas.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+.grid2 h1 {
+    color: white;
+    text-align:start  ;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.grid3 {
+ background-image: url(https://www.uc3m.es/vivir-madrid/media/vivir-madrid/img/grande/original/ig_calendario/04.antes-calendario.jpg);
+ background-size:cover;
+ background-repeat: no-repeat;
+ background-position: center;
+}
+
+.grid3 h1 {
+    color: white;
+    text-align:start  ;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.grid4{
+    background-image: url(https://s0.smartresize.com/wallpaper/166/187/HD-wallpaper-light-purple-gradient-ultra-aero-colorful-purple-color-design-light-plain-simple-gradient.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.grid4 img{
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.grid4 h1{
+    color: black;
+    text-align:start  ;
+    position: center;
+    top: 10px;
+    left: 10px;
+}
+.grid2:hover {
+    transform: translateY(-7%);
+    box-shadow: 5px 5px 20px;
+}
+.grid3:hover {
+    transform: translateY(-7%);
+    box-shadow: 5px 5px 20px;
+}
+.grid4:hover {
+    transform: scale(1.1);
+}
