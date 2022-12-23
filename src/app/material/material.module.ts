@@ -49,6 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
+    MatTableModule 
     
   ],
   imports: [

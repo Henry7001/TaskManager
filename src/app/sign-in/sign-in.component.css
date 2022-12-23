@@ -13,7 +13,13 @@ h2{
     text-align: center;
 }
 .mat-mdc-form-field{
-    display: inline-block;
-    padding: 10px;
+    display:contents;
+    padding: 15px;
+    background-color: white;
   }
-  
+
+.img  {
+    display:contents;
+    padding: 10px;
+    float: left;
+}

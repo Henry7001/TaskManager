@@ -11,6 +11,7 @@ import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.componen
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HeaderComponent,
     PaginaInicialComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
