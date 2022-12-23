@@ -18,8 +18,10 @@ h2{
     background-color: white;
   }
 
-.img  {
-    display:contents;
-    padding: 10px;
-    float: left;
+.form {
+  display: flex;
+  flex-direction: row;
+}
+img{
+    width: 80%;
 }

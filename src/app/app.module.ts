@@ -1,27 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MaterialModule } from './material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FooterComponent } from './ui/footer/footer.component';
+import { HeaderComponent } from './ui/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
-import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { MaterialModule } from './material/material.module';
+import { PaginaInicialComponent } from './ui/pagina-inicial/pagina-inicial.component';
+import { LoginComponent } from './auth/login/login.component';
+import { DashboardComponent } from './ui/dashboard/dashboard.component';
+import { UiModule } from './ui/ui.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FooterComponent,
-    HeaderComponent,
-    PaginaInicialComponent,
-    LoginComponent,
-    DashboardComponent,
-    SignInComponent
+    AppComponent
+
   ],
   imports: [
     BrowserModule,
@@ -29,7 +25,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
     BrowserAnimationsModule,
     NgbModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    UiModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
