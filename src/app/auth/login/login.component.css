@@ -1,0 +1,22 @@
+button {
+    color: white;
+    border-radius: 10px;
+    border-bottom: black;
+    background-color: black;
+}
+mat-form-field{
+    display:contents;
+    padding: 15px;
+    background-color: white;
+}
+h2{
+    background-color: white;
+    text-align: center;
+    font-size: 2rem;
+    padding: 24px 20px 0;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}
+h5{
+    color: black;
+}

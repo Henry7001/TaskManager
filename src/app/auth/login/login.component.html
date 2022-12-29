@@ -4,7 +4,7 @@
     
       <form [formGroup]="sesion" (ngSubmit)="OnSubmit()">
     
-        <mat-form-field  appearance="fill" >
+        <mat-form-field appearance="fill" >
           <mat-label>Nombre de usuario</mat-label>
           <input matInput formControlName="username" >
           <mat-hint *ngIf="sesion.controls['username'].invalid">Usuario requerido.</mat-hint>
@@ -15,9 +15,9 @@
           <input type="password" matInput formControlName="password">
           <mat-hint *ngIf="sesion.controls['password'].invalid">Contraseña requerida.</mat-hint>
         </mat-form-field>
-    
+        <h5 style="text-align: center;"> ¿No te has registrado? <a href="#"> Registrate.</a></h5>
         <mat-dialog-actions align="end">
-          <button [disabled]="sesion.invalid" [mat-dialog-close]="sesion.get('username')?.value">Ingresar</button>
+          <button mat-button [disabled]="sesion.invalid" [mat-dialog-close]="sesion.get('username')?.value">Ingresar</button>
         </mat-dialog-actions>
     
     
