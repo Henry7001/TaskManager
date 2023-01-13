@@ -6,16 +6,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PaginaInicialComponent } from './pages/pagina-inicial/pagina-inicial.component';
-import { SignInComponent } from '../auth/components/sign-in/sign-in.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    DashboardComponent,
     FooterComponent,
-    PaginaInicialComponent,
-    SignInComponent
+    DashboardComponent,
+    PaginaInicialComponent
   ],
   imports: [
     MaterialModule,

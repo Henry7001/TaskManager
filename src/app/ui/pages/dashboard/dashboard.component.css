@@ -1,9 +1,9 @@
-.menu {
+/* .menu {
     background-color: rgb(235, 230, 230);
     width: 165px;
     float: left;
   }
-  
+
   .menu ul li a {
     text-decoration: none;
     text-align: center;
@@ -11,26 +11,26 @@
     padding: 15px;
     font-size: 15px;
     display: block;
-  
+
   }
-  
+
   .menu ul {
     width: 100%;
     list-style: none;
     margin: 5px;
     float: right
   }
-  
+
   .menu ul li {
     width: 130%;
     list-style: none;
     float: right;
   }
-  
+
   .menu ul li a:hover {
     background: purple;
   }
-  
+
   .menu ul .submenu {
     margin: 0;
     background: purple;
@@ -44,7 +44,7 @@
   .tareas {
     float: center;
   }
-  
+
   .menu mat-icon {
     color: purple;
     float: center;
@@ -57,11 +57,32 @@
   }
   .tareas h1 {
     text-align: center;
-  
+
   }
-  
+
   .tareas mat-icon {
     float: right;
   }
-  
-  
+   */
+
+
+.dashboard{
+  padding-top: 4rem;
+  min-height: 100vh;
+  height: 100vh;
+}
+.example-container {
+  width: 100%;
+  height: 100%;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}

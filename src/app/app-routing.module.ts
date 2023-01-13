@@ -6,8 +6,6 @@ import { SignInComponent } from './auth/components/sign-in/sign-in.component';
 
 const routes: Routes = [
   {path:'',component:PaginaInicialComponent},
-  {path:'PaginaInicial', component:PaginaInicialComponent},
-  {path:'SignIn', component:SignInComponent},
   {path:'dashboard', component:DashboardComponent},
 ];
 

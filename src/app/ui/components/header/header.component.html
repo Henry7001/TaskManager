@@ -1,12 +1,12 @@
 <header>
   <mat-toolbar>
-    <a href="/" class="logo">
+    <div (click)="onLogoClick()" class="logo">
       Task<span>Manager</span>
-    </a>
+    </div>
     <span class="example-spacer"></span>
-    <button *ngIf="!username" (click)="openDialogSignIn()"> Registrarse</button>
+    <button *ngIf="!sesionService.isActiveUser()" (click)="openDialogSignIn()"> Registrarse</button>
     <span>{{username}}</span>
-    <button *ngIf="username" (click)="openDialogLogout()" class="btn">Cerrar sesión</button>
-    <button *ngIf="!username" (click)="openDialogLogin()">Iniciar Sesion</button>
+    <button *ngIf="sesionService.isActiveUser()" (click)="openDialogLogout()" class="btn">Cerrar sesión</button>
+    <button *ngIf="!sesionService.isActiveUser()" (click)="openDialogLogin()">Iniciar Sesion</button>
   </mat-toolbar>
 </header>
