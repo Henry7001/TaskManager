@@ -1,5 +1,13 @@
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+header{
+  padding: 0 1rem;
+  background-color: #f2f2f2;
+  position: fixed;
+  width: 100vw;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 span {
@@ -7,7 +15,7 @@ span {
 }
 
 a {
-    color: white;
+    color: #212121;
     text-decoration: none;
 }
 

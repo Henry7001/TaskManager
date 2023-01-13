@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Syne:wght@400;500&display=swap');
 
 html,
 body {
@@ -9,6 +9,21 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Roboto', "Helvetica Neue", sans-serif;
   overflow-x: hidden;
+}
+
+h1,h2,h3,h4{
+  font-family: 'Syne', sans-serif;
+}
+
+h1{
+  font-size: 5rem;
+}
+h2{
+  font-size: 3rem;
+  line-height: 3.5rem;
+}
+p{
+  font-size: 1.12rem;
 }
