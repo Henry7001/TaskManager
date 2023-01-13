@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from '../material/material.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { FooterComponent } from './footer/footer.component';
-import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { PaginaInicialComponent } from './pages/pagina-inicial/pagina-inicial.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 
 @NgModule({

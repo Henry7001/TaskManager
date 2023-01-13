@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignInComponent } from './ui/sign-in/sign-in.component';
-import { DashboardComponent } from './ui/dashboard/dashboard.component';
-import { PaginaInicialComponent } from './ui/pagina-inicial/pagina-inicial.component';
-
+import { DashboardComponent } from './ui/components/dashboard/dashboard.component';
+import { PaginaInicialComponent } from './ui/pages/pagina-inicial/pagina-inicial.component';
+import { SignInComponent } from './ui/components/sign-in/sign-in.component';
 
 const routes: Routes = [
   {path:'',component:PaginaInicialComponent},

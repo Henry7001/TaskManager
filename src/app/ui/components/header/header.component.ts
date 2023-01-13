@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { LoginComponent } from '../../auth/login/login.component';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import { SignInComponent } from '../sign-in/sign-in.component';
+import { LoginComponent } from 'src/app/auth/components/login/login.component';
 
 @Component({
   selector: 'app-header',
