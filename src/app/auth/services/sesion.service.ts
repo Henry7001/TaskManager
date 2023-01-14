@@ -36,6 +36,22 @@ export class SesionService {
         {
           titulo: 'Hacer ejercicio',
           descripcion: 'Ir al gym'
+        },
+        {
+          titulo: 'Hacer ejercicio',
+          descripcion: 'Ir al gym'
+        },
+        {
+          titulo: 'Realizar tarea de matemacica',
+          descripcion: 'tabla de multiplicas del 30'
+        },
+        {
+          titulo: 'Crear sitio web',
+          descripcion: 'Crear sitio web para el marte'
+        },
+        {
+          titulo: 'Hacer ejercicio',
+          descripcion: 'Ir al gym'
         }
       ]
     },

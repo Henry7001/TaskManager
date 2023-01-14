@@ -1,5 +1,6 @@
 button{
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
+  position: fixed;
+  z-index: 11;
+  top: 5.9rem;
+  right: 2.5rem;
 }

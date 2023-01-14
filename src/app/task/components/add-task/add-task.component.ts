@@ -5,7 +5,7 @@ import { AddTaskFormComponent } from '../add-task-form/add-task-form.component';
 
 @Component({
   selector: 'app-add-task',
-  templateUrl: './add-task.component.html',
+  template: '<button (click)="addTask()">Add</button>',
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent {

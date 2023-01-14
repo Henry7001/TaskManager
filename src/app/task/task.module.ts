@@ -11,6 +11,7 @@ import { AddTaskFormComponent } from './components/add-task-form/add-task-form.c
 import { TodosComponent } from './views/todos/todos.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskComponent } from './components/task/task.component';
+import { ViewTaskComponent } from './views/view-task/view-task.component';
 
 
 
@@ -22,7 +23,8 @@ import { TaskComponent } from './components/task/task.component';
     AddTaskFormComponent,
     TodosComponent,
     TaskListComponent,
-    TaskComponent
+    TaskComponent,
+    ViewTaskComponent
   ],
   imports: [
     CommonModule,
