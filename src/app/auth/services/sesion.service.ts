@@ -24,10 +24,16 @@ export class SesionService {
 
   private activeUser: User | undefined ;
 
+  initSessionStorage():void{
+    this.activeUser = JSON.parse(sessionStorage.getItem('sesion') as string);
+    console.log(this.activeUser);
+
+  }
 
   onNewUser(user: User):void{
     this.users.push(user);
     this.activeUser = user
+    sessionStorage.setItem('sesion', JSON.stringify(user));
   }
 
   login(nombre:string, contraseña: string):boolean{
@@ -38,6 +44,7 @@ export class SesionService {
       if(user.nombre == nombre && user.contraseña == contraseña ){
         valid = true;
         this.activeUser = user
+        sessionStorage.setItem('sesion', JSON.stringify(user));
       }
     })
 
@@ -45,7 +52,8 @@ export class SesionService {
   }
 
   logout():void{
-    this.activeUser = undefined
+    this.activeUser = undefined;
+    sessionStorage.removeItem('sesion')
   }
 
   isActiveUser():boolean{

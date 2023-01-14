@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInComponent } from '../../../auth/components/sign-in/sign-in.component';
@@ -10,18 +10,20 @@ import { SesionService } from 'src/app/auth/services/sesion.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  username: string | undefined = '';
+  username: string | undefined;
   constructor(
     public sesionService: SesionService,
     private router: Router, private dialog: MatDialog) {
 
-    this.username = this.sesionService.getActiveUser()?.nombre;
 
   }
+  ngOnInit(): void {
+    this.username = this.sesionService.getActiveUser()?.nombre;
+  }
 
-  onLogoClick(){
+  onLogoClick() {
     this.router.navigate(['/']);
   }
 
@@ -32,7 +34,7 @@ export class HeaderComponent {
     dialogRef.afterClosed().subscribe(() => {
       if (this.sesionService.isActiveUser()) {
         this.router.navigate(['/dashboard']);
-        this.username = this.sesionService.getActiveUser()?.nombre!;
+        this.username = this.sesionService.getActiveUser()?.nombre;
       }
     });
   }
