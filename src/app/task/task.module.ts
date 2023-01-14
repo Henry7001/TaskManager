@@ -8,6 +8,7 @@ import { TodayComponent } from './views/today/today.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddTaskFormComponent } from './components/add-task-form/add-task-form.component';
+import { TodosComponent } from './views/todos/todos.component';
 
 
 
@@ -16,7 +17,8 @@ import { AddTaskFormComponent } from './components/add-task-form/add-task-form.c
     DashboardComponent,
     TodayComponent,
     AddTaskComponent,
-    AddTaskFormComponent
+    AddTaskFormComponent,
+    TodosComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,7 @@
+<h1>todos las tareas!</h1>
+
+<ul *ngIf="!!tasks">
+  <li *ngFor="let task of tasks">
+    {{task.titulo}}
+  </li>
+</ul>

@@ -5,10 +5,12 @@ import { DashboardComponent } from './task/page/dashboard/dashboard.component';
 import { TodayComponent } from './task/views/today/today.component';
 import { ProximosComponent } from './task/views/proximos/proximos.component';
 import { TerminadosComponent } from './task/views/terminados/terminados.component';
+import { TodosComponent } from './task/views/todos/todos.component';
 
 const routes: Routes = [
   {path:'',component:PaginaInicialComponent},
   {path:'dashboard', component:DashboardComponent, children:[
+    { path: '', component: TodosComponent, outlet: 'views'},
     { path: 'today', component: TodayComponent, outlet: 'views'},
     { path: 'proximos', component: ProximosComponent, outlet: 'views'},
     { path: 'terminados', component: TerminadosComponent, outlet: 'views'},
