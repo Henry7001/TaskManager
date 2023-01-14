@@ -12,12 +12,17 @@ export class TaskComponent {
 
   @Input() task: Task | undefined;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) {
+  }
 
-  openTask(){
+  openTask() {
     const dialogRef = this.dialog.open(ViewTaskComponent, {
       data: { task: this.task },
     });
+  }
+
+  formatTime(time: Date) {
+    return new Date(time).toLocaleDateString("en-GB");
   }
 
 }

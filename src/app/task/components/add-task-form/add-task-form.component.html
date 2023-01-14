@@ -15,17 +15,23 @@
           requerida.</span></mat-hint>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>fecha Inicio</mat-label>
-      <input type="text" matInput formControlName="fechaInicio">
-      <mat-hint *ngIf="registrarse.controls['fechaInicio'].invalid"><span class="hint">fecha Inicio requerida</span></mat-hint>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Fecha de inicio</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaInicio">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>fecha Fin</mat-label>
-      <input type="text" matInput formControlName="fechaFin">
-      <mat-hint *ngIf="registrarse.controls['fechaFin'].invalid"><span class="hint">fecha Fin requerida</span></mat-hint>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Fecha de Fin</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="fechaFin">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
+
 
     <mat-dialog-actions align="end">
       <button [disabled]="registrarse.invalid" type="submit">Add</button>

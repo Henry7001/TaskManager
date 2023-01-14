@@ -1,6 +1,7 @@
 export interface Task {
   titulo: string,
   descripcion: string,
-  fechaInicio?: Date,
-  fechaFin?: Date,
+  fechaInicio: Date,
+  fechaFin: Date,
+  estado: boolean,
 }

@@ -1,17 +1,18 @@
-<div class="card work" (click)="openTask()">
-  <div class="img-section">
-
+<div class="card work">
+  <div class="img-section" [ngClass]="{'complete': task!.estado}">
+    <mat-checkbox color="warn" class="checkbox" checked={{task!.estado}}>Completada</mat-checkbox>
+    <app-edit-task></app-edit-task>
+    <app-delete-task></app-delete-task>
   </div>
-  <div class="card-desc">
+  <div class="card-desc" (click)="openTask()">
     <div class="card-header">
-      <!-- <div class="card-title" *ngIf="!!task.fechaFin">{{task.fechaFin}}</div> -->
+      <div class="card-title">{{formatTime(task!.fechaFin)}}</div>
       <!-- <div class="card-menu">
         <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>
       </div> -->
-      <app-edit-task></app-edit-task>
-      <app-delete-task></app-delete-task>
+
     </div>
     <div class="card-titulo">{{task!.titulo}}</div>
     <p class="descripcion">{{task!.descripcion}}</p>

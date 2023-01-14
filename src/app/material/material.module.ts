@@ -9,6 +9,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [],
@@ -22,9 +26,12 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDatepickerModule,
+    MatCheckboxModule
   ],
   imports: [
+    MatNativeDateModule
   ]
 })
 export class MaterialModule { }

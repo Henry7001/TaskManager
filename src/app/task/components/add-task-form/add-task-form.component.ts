@@ -29,7 +29,9 @@ export class AddTaskFormComponent {
     const newTask: Task = {
       titulo: this.registrarse.get('titulo')?.value!,
       descripcion: this.registrarse.get('descripcion')?.value!,
-      // : this.registrarse.get('')?.value!,
+      fechaInicio: new Date(this.registrarse.get('fechaInicio')?.value!),
+      fechaFin: new Date(this.registrarse.get('fechaFin')?.value!),
+      estado: false,
     }
 
     this.taskService.addTaskToActiveUser(newTask);

@@ -15,43 +15,73 @@ export class SesionService {
       tasks: [
         {
           titulo: 'Realizar tarea de matemacica',
-          descripcion: 'tabla de multiplicas del 30'
+          descripcion: 'tabla de multiplicas del 30',
+          fechaFin: new Date(),
+          fechaInicio: new Date(),
+          estado: true,
         },
         {
           titulo: 'Crear sitio web',
-          descripcion: 'Crear sitio web para el marte'
+          descripcion: 'Crear sitio web para el marte',
+          fechaFin: new Date(),
+          fechaInicio: new Date(),
+          estado: false
         },
         {
           titulo: 'Hacer ejercicio',
-          descripcion: 'Ir al gym'
+          descripcion: 'Ir al gym',
+          fechaFin: new Date(),
+          fechaInicio: new Date(),
+          estado: false
         },
         {
           titulo: 'Realizar tarea de matemacica',
-          descripcion: 'tabla de multiplicas del 30'
+          descripcion: 'tabla de multiplicas del 30',
+          fechaFin: new Date(),
+          fechaInicio: new Date(),
+          estado: false
         },
         {
           titulo: 'Crear sitio web',
-          descripcion: 'Crear sitio web para el marte'
+          descripcion: 'Crear sitio web para el marte',
+          fechaFin: new Date(),
+          fechaInicio: new Date(),
+          estado: false
         },
         {
           titulo: 'Hacer ejercicio',
-          descripcion: 'Ir al gym'
+          descripcion: 'Ir al gym',
+          fechaFin: new Date(),
+          fechaInicio: new Date(),
+          estado: false
         },
         {
           titulo: 'Hacer ejercicio',
-          descripcion: 'Ir al gym'
+          descripcion: 'Ir al gym',
+          fechaFin: new Date(),
+          fechaInicio: new Date(),
+          estado: false
         },
         {
           titulo: 'Realizar tarea de matemacica',
-          descripcion: 'tabla de multiplicas del 30'
+          descripcion: 'tabla de multiplicas del 30',
+          fechaFin: new Date(),
+          fechaInicio: new Date(),
+          estado: false
         },
         {
           titulo: 'Crear sitio web',
-          descripcion: 'Crear sitio web para el marte'
+          descripcion: 'Crear sitio web para el marte',
+          fechaFin: new Date(),
+          fechaInicio: new Date(),
+          estado: false
         },
         {
           titulo: 'Hacer ejercicio',
-          descripcion: 'Ir al gym'
+          descripcion: 'Ir al gym',
+          fechaFin: new Date(),
+          fechaInicio: new Date(),
+          estado: false
         }
       ]
     },
