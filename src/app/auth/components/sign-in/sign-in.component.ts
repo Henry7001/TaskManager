@@ -28,6 +28,7 @@ export class SignInComponent {
       nombre: this.registrarse.get('nombre')?.value!,
       contraseña: this.registrarse.get('contraseña')?.value!,
       correo: this.registrarse.get('correo')?.value!,
+      tasks: []
     }
 
     this.sesionService.onNewUser(newUser)

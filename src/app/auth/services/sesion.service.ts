@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interface/user';
+import { Task } from '../../task/interface/task';
 
 @Injectable({ providedIn: 'root' })
 export class SesionService {
@@ -10,12 +11,14 @@ export class SesionService {
     {
       nombre:'guillermo',
       correo: 'guiller.zeva@gmail.com',
-      contraseña:'admin'
+      contraseña:'admin',
+      tasks: []
     },
     {
       nombre:'admin',
       correo: 'admin@gmail.com',
-      contraseña:'admin'
+      contraseña:'admin',
+      tasks: []
     }
   ]
 
