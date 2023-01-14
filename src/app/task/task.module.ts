@@ -12,6 +12,7 @@ import { TodosComponent } from './views/todos/todos.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskComponent } from './components/task/task.component';
 import { ViewTaskComponent } from './views/view-task/view-task.component';
+import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
 
 
 
@@ -24,7 +25,8 @@ import { ViewTaskComponent } from './views/view-task/view-task.component';
     TodosComponent,
     TaskListComponent,
     TaskComponent,
-    ViewTaskComponent
+    ViewTaskComponent,
+    DeleteTaskComponent
   ],
   imports: [
     CommonModule,
