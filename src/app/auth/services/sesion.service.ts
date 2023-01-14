@@ -7,41 +7,66 @@ export class SesionService {
 
   constructor() { }
 
-  private users: User[]=[
+  private users: User[] = [
     {
-      nombre:'guillermo',
+      nombre: 'guillermo',
       correo: 'guiller.zeva@gmail.com',
-      contraseña:'admin',
-      tasks: []
+      contraseña: 'admin',
+      tasks: [
+        {
+          titulo: 'Realizar tarea de matemacica',
+          descripcion: 'tabla de multiplicas del 30'
+        },
+        {
+          titulo: 'Crear sitio web',
+          descripcion: 'Crear sitio web para el marte'
+        },
+        {
+          titulo: 'Hacer ejercicio',
+          descripcion: 'Ir al gym'
+        },
+        {
+          titulo: 'Realizar tarea de matemacica',
+          descripcion: 'tabla de multiplicas del 30'
+        },
+        {
+          titulo: 'Crear sitio web',
+          descripcion: 'Crear sitio web para el marte'
+        },
+        {
+          titulo: 'Hacer ejercicio',
+          descripcion: 'Ir al gym'
+        }
+      ]
     },
     {
-      nombre:'admin',
+      nombre: 'admin',
       correo: 'admin@gmail.com',
-      contraseña:'admin',
+      contraseña: 'admin',
       tasks: []
     }
   ]
 
-  private activeUser: User | undefined ;
+  private activeUser: User | undefined;
 
-  initSessionStorage():void{
+  initSessionStorage(): void {
     this.activeUser = JSON.parse(sessionStorage.getItem('sesion') as string);
     //console.log(this.activeUser);
 
   }
 
-  onNewUser(user: User):void{
+  onNewUser(user: User): void {
     this.users.push(user);
     this.activeUser = user
     sessionStorage.setItem('sesion', JSON.stringify(user));
   }
 
-  login(nombre:string, contraseña: string):boolean{
+  login(nombre: string, contraseña: string): boolean {
 
     let valid = false;
 
-    this.users.forEach((user)=> {
-      if(user.nombre == nombre && user.contraseña == contraseña ){
+    this.users.forEach((user) => {
+      if (user.nombre == nombre && user.contraseña == contraseña) {
         valid = true;
         this.activeUser = user
         sessionStorage.setItem('sesion', JSON.stringify(user));
@@ -51,16 +76,16 @@ export class SesionService {
     return valid
   }
 
-  logout():void{
+  logout(): void {
     this.activeUser = undefined;
     sessionStorage.removeItem('sesion')
   }
 
-  isActiveUser():boolean{
+  isActiveUser(): boolean {
     return !!this.activeUser;
   }
 
-  getActiveUser():User | undefined{
+  getActiveUser(): User | undefined {
     return this.activeUser;
   }
 

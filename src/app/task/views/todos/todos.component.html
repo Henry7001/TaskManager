@@ -1,13 +1,5 @@
-<h1>todos las tareas!</h1>
+<h2>Todas las tareas!</h2>
 
-<ul *ngIf="!!tasks">
-  <li *ngFor="let task of tasks">
-    {{task.titulo}}
-    {{task.descripcion}}
-    <!--{{task.fecha}}
-    {{task.hora}}
-    {{task.importancia}}
-    {{task.estado}}
-    {{task.categoria}}-->
-  </li>
-</ul>
+<app-task-list [tasks]="this.tasks"></app-task-list>
+
+
