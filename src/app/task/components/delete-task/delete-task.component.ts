@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `<mat-icon color="warn" (click)="onDelete($event)">delete_forever</mat-icon>`,
   styles: [`
     .mat-icon {
+      display: grid;
       font-size: 25px;
     }
   `]

@@ -13,6 +13,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskComponent } from './components/task/task.component';
 import { ViewTaskComponent } from './views/view-task/view-task.component';
 import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
 
 
@@ -26,7 +27,8 @@ import { DeleteTaskComponent } from './components/delete-task/delete-task.compon
     TaskListComponent,
     TaskComponent,
     ViewTaskComponent,
-    DeleteTaskComponent
+    DeleteTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     CommonModule,
