@@ -80,12 +80,14 @@
 
   <mat-drawer-container class="example-container">
     <mat-drawer class="example-sidenav" mode="side" opened>
-      <p>Auto-resizing sidenav</p>
-
+      <a [routerLink]="[{outlets: {'views': ['today']}}]"><mat-icon>calendar_today</mat-icon>Tareas de Hoy</a>
+      <a [routerLink]="[{outlets: {'views': ['proximos']}}]"><mat-icon>date_range</mat-icon>Proximos 7 dias</a>
+      <a [routerLink]="[{outlets: {'views': ['terminados']}}]"><mat-icon>date_range</mat-icon>Terminados</a>
     </mat-drawer>
 
     <div class="example-sidenav-content">
       <h1>Daskboard</h1>
+      <router-outlet name="views"></router-outlet>
     </div>
 
   </mat-drawer-container>

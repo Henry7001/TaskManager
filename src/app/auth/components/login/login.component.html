@@ -1,25 +1,37 @@
 
+<div class="login">
+  <div class="image">
+    <img
+    src="https://us.123rf.com/450wm/artursz/artursz1808/artursz180811427/106693758-nota-de-escritura-que-muestra-la-pregunta-de-la-lista-de-tareas-pendientes-exhibici%C3%B3n-fotogr%C3%A1fica-de.jpg?ver=6"
+    alt="">
+  </div>
+
+  <div class="form">
+
     <h2>Iniciar sesión</h2>
-    <mat-dialog-content style="background-color: white;">
 
-      <form [formGroup]="sesion" (ngSubmit)="OnSubmit()">
+    <form [formGroup]="sesion" (ngSubmit)="OnSubmit()">
 
-        <mat-form-field  appearance="fill" >
-          <mat-label>Nombre de usuario</mat-label>
-          <input matInput formControlName="nombre" >
-          <mat-hint *ngIf="sesion.controls['nombre'].invalid">Nombre requerido.</mat-hint>
-        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre de usuario</mat-label>
+        <input matInput formControlName="nombre">
+        <mat-hint *ngIf="sesion.controls['nombre'].invalid"> <span class="hint">Nombre requerido.</span></mat-hint>
+      </mat-form-field>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Contraseña</mat-label>
-          <input type="password" matInput formControlName="contraseña">
-          <mat-hint *ngIf="sesion.controls['contraseña'].invalid">Contraseña requerida.</mat-hint>
-        </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput formControlName="contraseña">
+        <mat-hint *ngIf="sesion.controls['contraseña'].invalid"><span class="hint">Contraseña
+            requerida.</span></mat-hint>
+      </mat-form-field>
 
-        <mat-dialog-actions align="end">
-          <button [disabled]="sesion.invalid">Ingresar</button>
-        </mat-dialog-actions>
+      <mat-dialog-actions align="end">
+        <button [disabled]="sesion.invalid">Ingresar</button>
+      </mat-dialog-actions>
 
 
-      </form>
-    </mat-dialog-content>
+    </form>
+
+  </div>
+
+</div>

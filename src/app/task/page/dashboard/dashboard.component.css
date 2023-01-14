@@ -85,4 +85,8 @@
 
 .example-sidenav {
   padding: 20px;
+
+}
+.example-sidenav a{
+  display: block;
 }
