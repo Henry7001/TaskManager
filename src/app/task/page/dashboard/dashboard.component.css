@@ -15,11 +15,21 @@
 }
 
 .example-sidenav {
-  padding: 20px;
+  padding: 20px 0;
 
 }
 .example-sidenav a{
   display: block;
+  display: flex;
+  padding: 1rem 20px;
+  gap: .5rem;
+  align-items: center;
+  text-decoration: none;
+  color: #212121;
+}
+.example-sidenav a:hover{
+  background: rgb(247, 247, 247);
+  color: #4e4b94;
 }
 
 .dashboard-title {
