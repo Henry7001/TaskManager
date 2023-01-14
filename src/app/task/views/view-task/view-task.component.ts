@@ -11,4 +11,17 @@ export class ViewTaskComponent {
   constructor(
     private dialogRef: MatDialogRef<ViewTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+    formatTime(time: Date) {
+      return new Date(time).toLocaleDateString("en-GB");
+    }
+
+    formatEstado( estado: boolean) {
+      if (estado) {
+        return "Completado";
+      } else {
+        return "Sin completar";
+    }
+
+    }
 }

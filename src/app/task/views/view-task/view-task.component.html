@@ -1,1 +1,11 @@
-<p>{{data.task.titulo}}</p>
+<mat-dialog-content>
+    <button mat-icon-button mat-dialog-close class="close">
+        <mat-icon>close</mat-icon>
+    </button>
+    <h1 >Detalles de la Tarea</h1>
+    <p><b>Título:</b> {{data.task!.titulo}}</p>
+    <p><b>Descripción:</b> {{data.task!.descripcion}}</p>
+    <p><b>Fecha de Inicio:</b> {{formatTime(data.task!.fechaInicio)}}</p>
+    <p><b>Fecha de Fin:</b> {{formatTime(data.task!.fechaFin)}}</p>
+    <p><b>Estado:</b> {{formatEstado(data.task!.estado)}}</p>
+</mat-dialog-content>

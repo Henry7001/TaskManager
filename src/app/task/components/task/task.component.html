@@ -6,7 +6,8 @@
   </div>
   <div class="card-desc" (click)="openTask()">
     <div class="card-header">
-      <div class="card-title">{{formatTime(task!.fechaFin)}}</div>
+      <div class="card-title">Inicio: {{formatTime(task!.fechaInicio)}}</div>
+      <div class="card-title">Fin: {{formatTime(task!.fechaFin)}}</div>
       <!-- <div class="card-menu">
         <div class="dot"></div>
         <div class="dot"></div>

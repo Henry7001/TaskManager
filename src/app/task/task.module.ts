@@ -14,6 +14,7 @@ import { TaskComponent } from './components/task/task.component';
 import { ViewTaskComponent } from './views/view-task/view-task.component';
 import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
+import { TerminadosComponent } from './views/terminados/terminados.component';
 
 
 
@@ -28,7 +29,8 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
     TaskComponent,
     ViewTaskComponent,
     DeleteTaskComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    TerminadosComponent
   ],
   imports: [
     CommonModule,

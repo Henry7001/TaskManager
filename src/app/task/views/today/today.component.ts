@@ -7,11 +7,11 @@ import { SesionService } from '../../../auth/services/sesion.service';
   templateUrl: './today.component.html',
   styleUrls: ['./today.component.css']
 })
+
 export class TodayComponent implements OnInit{
 
   public tasks: Task[] | undefined= this.sesionService.getActiveUser()?.tasks;
-
-  // public today: Task[] | undefined
+  //public today: Task[] | undefined
 
   constructor(private sesionService: SesionService){
     console.log(this.tasks);

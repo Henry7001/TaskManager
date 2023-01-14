@@ -10,14 +10,13 @@ import { Task } from '../../interface/task';
 export class TerminadosComponent implements OnInit{
 
   public tasks: Task[] | undefined= this.sesionService.getActiveUser()?.tasks;
-
-  // public terminados: Task[] | undefined
+  public terminados: Task[] | undefined = this.tasks?.filter(task => task.estado === true);
 
   constructor(private sesionService: SesionService){
-    console.log(this.tasks);
+    console.log(this.terminados);
   }
 
   ngOnInit(): void {
-    this.tasks = this.sesionService.getActiveUser()?.tasks
+    this.tasks = this.tasks?.filter(task => task.estado === true);
   }
 }
