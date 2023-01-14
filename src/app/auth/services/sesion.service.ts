@@ -26,7 +26,7 @@ export class SesionService {
 
   initSessionStorage():void{
     this.activeUser = JSON.parse(sessionStorage.getItem('sesion') as string);
-    console.log(this.activeUser);
+    //console.log(this.activeUser);
 
   }
 

@@ -3,5 +3,11 @@
 <ul *ngIf="!!tasks">
   <li *ngFor="let task of tasks">
     {{task.titulo}}
+    {{task.descripcion}}
+    <!--{{task.fecha}}
+    {{task.hora}}
+    {{task.importancia}}
+    {{task.estado}}
+    {{task.categoria}}-->
   </li>
 </ul>

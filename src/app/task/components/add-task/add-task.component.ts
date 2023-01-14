@@ -13,11 +13,11 @@ export class AddTaskComponent {
   constructor(private dialog: MatDialog, private sesionService: SesionService){}
 
   addTask():void{
-    console.log('add task');
+    //console.log('add task');
     const dialogRef = this.dialog.open(AddTaskFormComponent);
 
     dialogRef.afterClosed().subscribe(() => {
-      console.log(this.sesionService.getActiveUser());
+      //console.log(this.sesionService.getActiveUser());
 
     });
   }

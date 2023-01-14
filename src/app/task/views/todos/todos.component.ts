@@ -10,11 +10,10 @@ import { SesionService } from 'src/app/auth/services/sesion.service';
 })
 export class TodosComponent implements OnInit{
 
-  public tasks: Task[] | undefined = this.sesionService.getActiveUser()?.tasks;
+  public tasks: Task[] | undefined= this.sesionService.getActiveUser()?.tasks;
 
   constructor(private sesionService: SesionService){
-    console.log();
-
+    console.log(this.tasks);
   }
 
   ngOnInit(): void {
