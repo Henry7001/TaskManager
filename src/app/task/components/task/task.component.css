@@ -40,7 +40,7 @@
  }
 
  .img-section {
-  transform: translateY(1em);
+  transform: translateY(1.2em);
   transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -52,10 +52,7 @@
  }
 
  .img-section.complete{
-  background-color: #393E59;
-  color: #f2f2f2;
- }
- .img-section.complete .checkbox{
+  background-color: #46495a;
   color: #f2f2f2;
  }
 
@@ -66,8 +63,10 @@
  .card-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
   border: none;
+  padding: 0;
  }
 
  .card-title {
@@ -77,6 +76,10 @@
   height: 100%;
   font-size: 0.9em;
   font-weight: 500;
+ }
+
+ .card-title.fin{
+  justify-content: flex-end;
  }
 
  .card-menu {
