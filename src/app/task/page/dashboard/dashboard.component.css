@@ -90,3 +90,11 @@
 .example-sidenav a{
   display: block;
 }
+
+.dashboard-title {
+  position: absolute;
+  font-family: Syne,sans-serif;
+  color: rgba(0, 0, 0, 0.205);
+  padding: 20px;
+}
+
