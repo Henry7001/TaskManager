@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Component } from '@angular/core';
+import { Component, Input, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Task } from '../../interface/task';
 import { TaskService } from '../../services/task.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -13,26 +13,37 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class TaskFormComponent {
 
-  public title:string = ''
+  private idTask: string = '';
+  public tipo: 'add' | 'edit' = 'add';
 
-  registrarse = new FormGroup({
-    titulo: new FormControl('', [Validators.required]),
-    descripcion: new FormControl('', [Validators.required]),
-    fechaInicio: new FormControl('', [Validators.required]),
-    fechaFin: new FormControl('', [Validators.required])
-  })
+  registrarse : FormGroup;
 
 
   constructor(
     private taskService: TaskService,
     private dialogRef: MatDialogRef<TaskFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private _snackBar: MatSnackBar
-    ){}
+    ){
+      this.tipo = data.tipo;
+      this.idTask = data.idTask? data.idTask : uuidv4();
+
+      let task = this.taskService.getTaskToById(this.idTask);
+
+      this.registrarse = new FormGroup({
+        titulo: new FormControl(task?.titulo || '', [Validators.required]),
+        descripcion: new FormControl(task?.descripcion || '', [Validators.required]),
+        fechaInicio: new FormControl(task?.fechaInicio || '', [Validators.required]),
+        fechaFin: new FormControl(task?.fechaFin || '', [Validators.required])
+      })
+
+    }
 
 
   OnSubmit(){
-    const newTask: Task = {
-      id: uuidv4(),
+
+    const task: Task = {
+      id: this.idTask,
       titulo: this.registrarse.get('titulo')?.value!,
       descripcion: this.registrarse.get('descripcion')?.value!,
       fechaInicio: new Date(this.registrarse.get('fechaInicio')?.value!),
@@ -40,17 +51,23 @@ export class TaskFormComponent {
       estado: false,
     }
 
+    if(task.fechaInicio < task.fechaFin){
 
-    if(newTask.fechaInicio < newTask.fechaFin){
-      this.taskService.addTaskToActiveUser(newTask);
+      if(this.tipo==='edit'){
+        this.taskService.editTask(this.idTask,task);
+      }else{
+        this.taskService.addTaskToActiveUser(task);
+      }
+
     }else{
       this._snackBar.open('La fecha de inicio debe ser menor a la fecha de fin', 'Cerrar',{
         duration: 2000,
       }
       );
     }
-    this.dialogRef.close();
 
+    this.dialogRef.close();
   }
+
 
 }

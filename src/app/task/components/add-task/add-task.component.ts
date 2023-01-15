@@ -14,7 +14,9 @@ export class AddTaskComponent {
 
   addTask():void{
     //console.log('add task');
-    const dialogRef = this.dialog.open(TaskFormComponent);
+    const dialogRef = this.dialog.open(TaskFormComponent, {
+      data: { tipo: 'add' },
+    });
 
     dialogRef.afterClosed().subscribe(() => {
       //console.log(this.sesionService.getActiveUser());

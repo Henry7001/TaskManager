@@ -1,17 +1,17 @@
 <mat-dialog-content class="dialog">
     <h2 class="header">Detalles de la Tarea</h2>
-    <h1 class="title">{{data.task!.titulo}}</h1>
+    <h1 class="title">{{task!.titulo}}</h1>
 
     <div class="info">
-      <p><b>Fecha de Inicio:</b> {{formatTime(data.task!.fechaInicio)}}</p>
-      <p><b>Fecha de Fin:</b> {{formatTime(data.task!.fechaFin)}}</p>
-      <p><b>Estado:</b> {{formatEstado(data.task!.estado)}}</p>
+      <p><b>Fecha de Inicio:</b> {{formatTime(task!.fechaInicio)}}</p>
+      <p><b>Fecha de Fin:</b> {{formatTime(task!.fechaFin)}}</p>
+      <p><b>Estado:</b> {{formatEstado(task!.estado)}}</p>
     </div>
     <h3>Descripción</h3>
-    <p class="desc">{{data.task!.descripcion}}</p>
+    <p class="desc">{{task!.descripcion}}</p>
 
     <div class="options">
-      <app-edit-task></app-edit-task>
+      <app-edit-task [idTask]="task!.id"></app-edit-task>
       <app-delete-task></app-delete-task>
     </div>
 </mat-dialog-content>

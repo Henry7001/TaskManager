@@ -17,7 +17,7 @@ export class TaskComponent {
 
   openTask() {
     const dialogRef = this.dialog.open(ViewTaskComponent, {
-      data: { task: this.task },
+      data: { idTask: this.task?.id },
     });
   }
 

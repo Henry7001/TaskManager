@@ -1,7 +1,7 @@
 <div class="card work">
   <div class="img-section" [ngClass]="{'complete': task!.estado}">
     <mat-checkbox color="primary" class="checkbox" checked={{task!.estado}}>Completada</mat-checkbox>
-    <app-edit-task></app-edit-task>
+    <app-edit-task [idTask]="task!.id"></app-edit-task>
     <app-delete-task></app-delete-task>
   </div>
   <div class="card-desc" (click)="openTask()">

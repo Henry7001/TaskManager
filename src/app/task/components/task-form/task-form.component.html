@@ -1,5 +1,5 @@
 <div class="form">
-  <h2>Agregar nueva tarea</h2>
+  <h2>{{tipo==='edit'?'Editar tarea':'Agregar nueva tarea'}}</h2>
   <form [formGroup]="registrarse" (ngSubmit)="OnSubmit()">
     <mat-form-field appearance="fill">
       <mat-label>Titulo</mat-label>
@@ -34,7 +34,7 @@
 
 
     <mat-dialog-actions align="end">
-      <button [disabled]="registrarse.invalid" type="submit">Add</button>
+      <button [disabled]="registrarse.invalid" type="submit" >{{tipo==='edit'?'Edit':'Add'}}</button>
     </mat-dialog-actions>
   </form>
 </div>
