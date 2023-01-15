@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interface/user';
 import { Task } from '../../task/interface/task';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({ providedIn: 'root' })
 export class SesionService {
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   private users: User[] = [
     {
@@ -116,6 +117,11 @@ export class SesionService {
         valid = true;
         this.activeUser = user
         sessionStorage.setItem('sesion', JSON.stringify(user));
+      }else{
+        this._snackBar.open('Cedenciales inválidas.', 'Cerrar',{
+          duration: 2000,
+        }
+        );
       }
     })
 

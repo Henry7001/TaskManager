@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Task } from '../../interface/task';
 import { TaskService } from '../../services/task.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { straightThroughStringTask } from 'simple-git/dist/src/lib/tasks/task';
 
 @Component({
   selector: 'app-add-task-form',
@@ -22,7 +24,9 @@ export class AddTaskFormComponent {
 
   constructor(
     private taskService: TaskService,
-    private dialogRef: MatDialogRef<AddTaskFormComponent>){}
+    private dialogRef: MatDialogRef<AddTaskFormComponent>,
+    private _snackBar: MatSnackBar
+    ){}
 
 
   OnSubmit(){
@@ -34,7 +38,15 @@ export class AddTaskFormComponent {
       estado: false,
     }
 
-    this.taskService.addTaskToActiveUser(newTask);
+    
+    if(newTask.fechaInicio < newTask.fechaFin){
+      this.taskService.addTaskToActiveUser(newTask);
+    }else{
+      this._snackBar.open('La fecha de inicio debe ser menor a la fecha de fin', 'Cerrar',{
+        duration: 2000,
+      }
+      );
+    }
     this.dialogRef.close();
 
   }

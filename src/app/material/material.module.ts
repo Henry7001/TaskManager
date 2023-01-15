@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTableModule,
     MatSidenavModule,
     MatDatepickerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   imports: [
     MatNativeDateModule
