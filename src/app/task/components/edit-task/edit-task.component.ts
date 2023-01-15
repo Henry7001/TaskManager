@@ -19,27 +19,36 @@ import {TaskFormComponent } from '../task-form/task-form.component';
   `]
 })
 
-export class EditTaskComponent {
+export class EditTaskComponent{
 
   @Input() idTask: string | undefined;
+  @Input() viewDialogTask: any | undefined;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+  }
 
   onEdit(event: any): void {
     event.stopPropagation();
+    if(this.viewDialogTask){
+      this.viewDialogTask.close();
+    }
     const dialogRef = this.dialog.open(TaskFormComponent, {
       data: {
         tipo: 'edit',
         idTask: this.idTask
      },
     });
-    console.log('edit');
+
 
     /*dialogRef.afterClosed().subscribe(() => {
       //console.log(this.sesionService.getActiveUser());
 
     });*/
 
+
   }
 
+  onClick(dialogRef: MatDialog){
+
+  }
 }

@@ -10,24 +10,27 @@ import { TaskService } from '../../services/task.service';
 })
 export class ViewTaskComponent {
 
-  public task:Task | undefined = this.taskService.getTaskToById(this.data.idTask);
+  public task: Task | undefined = this.taskService.getTaskToById(this.data.idTask);
 
   constructor(
     private taskService: TaskService,
-    private dialogRef: MatDialogRef<ViewTaskComponent>,
+    public dialogRef: MatDialogRef<ViewTaskComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    }
+  }
 
-    formatTime(time: Date) {
-      return new Date(time).toLocaleDateString("en-GB");
-    }
+  formatTime(time: Date) {
+    return new Date(time).toLocaleDateString("en-GB");
+  }
 
-    formatEstado( estado: boolean) {
-      if (estado) {
-        return "Completado";
-      } else {
-        return "Sin completar";
+  formatEstado(estado: boolean) {
+    if (estado) {
+      return "Completado";
+    } else {
+      return "Sin completar";
     }
+  }
 
-    }
+  closeDialog(){
+    return this.dialogRef
+  }
 }

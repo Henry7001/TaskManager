@@ -19,6 +19,7 @@ export class TaskComponent {
     const dialogRef = this.dialog.open(ViewTaskComponent, {
       data: { idTask: this.task?.id },
     });
+
   }
 
   formatTime(time: Date) {

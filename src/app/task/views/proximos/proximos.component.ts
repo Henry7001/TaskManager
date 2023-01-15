@@ -15,16 +15,16 @@ export class ProximosComponent implements OnInit{
   public todayString = this.nextWeek.toLocaleDateString('en-GB');
   public proximos: Task[] | undefined;
   constructor(private sesionService: SesionService){
-    
+
   }
 
   ngOnInit(): void {
-    this.tasks = this.sesionService.getActiveUser()?.tasks;
-    this.nextWeek.setDate(this.nextWeek.getDate() + 7);
-    this.nextWeekString= this.nextWeek.toLocaleDateString('en-GB');
-    this.proximos = this.tasks?.filter(task => task.fechaInicio.toLocaleDateString('en-GB') === this.todayString);
-    console.log(this.proximos);
+    // this.tasks = this.sesionService.getActiveUser()?.tasks;
+    // this.nextWeek.setDate(this.nextWeek.getDate() + 7);
+    // this.nextWeekString= this.nextWeek.toLocaleDateString('en-GB');
+    // this.proximos = this.tasks?.filter(task => task.fechaInicio.toLocaleDateString('en-GB') === this.todayString);
+    // console.log(this.proximos);
   }
-  
+
 
 }
