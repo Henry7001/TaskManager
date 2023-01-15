@@ -15,6 +15,7 @@ export class SesionService {
       contraseña: 'admin',
       tasks: [
         {
+          id: '33vcvcvc',
           titulo: 'Realizar tarea de matemacica',
           descripcion: 'tabla de multiplicas del 30',
           fechaFin: new Date(),
@@ -22,6 +23,7 @@ export class SesionService {
           estado: true,
         },
         {
+          id: '33nbnbn',
           titulo: 'Crear sitio web',
           descripcion: 'Crear sitio web para el marte',
           fechaFin: new Date(),
@@ -29,6 +31,7 @@ export class SesionService {
           estado: false
         },
         {
+          id: '33iuiui',
           titulo: 'Hacer ejercicio',
           descripcion: 'Ir al gym',
           fechaFin: new Date(),
@@ -36,6 +39,7 @@ export class SesionService {
           estado: false
         },
         {
+          id: '33gfgfh',
           titulo: 'Realizar tarea de matemacica',
           descripcion: 'tabla de multiplicas del 30',
           fechaFin: new Date(),
@@ -43,6 +47,7 @@ export class SesionService {
           estado: false
         },
         {
+          id: '33wqwqwq',
           titulo: 'Crear sitio web',
           descripcion: 'Crear sitio web para el marte',
           fechaFin: new Date(),
@@ -50,6 +55,7 @@ export class SesionService {
           estado: false
         },
         {
+          id: '33rerer',
           titulo: 'Hacer ejercicio',
           descripcion: 'Ir al gym',
           fechaFin: new Date(),
@@ -57,6 +63,7 @@ export class SesionService {
           estado: false
         },
         {
+          id: '33fgfgfg',
           titulo: 'Hacer ejercicio',
           descripcion: 'Ir al gym',
           fechaFin: new Date(),
@@ -64,6 +71,7 @@ export class SesionService {
           estado: false
         },
         {
+          id: '33dsdas',
           titulo: 'Realizar tarea de matemacica',
           descripcion: 'tabla de multiplicas del 30',
           fechaFin: new Date(),
@@ -71,6 +79,7 @@ export class SesionService {
           estado: false
         },
         {
+          id: '33Crear',
           titulo: 'Crear sitio web',
           descripcion: 'Crear sitio web para el marte',
           fechaFin: new Date(),
@@ -78,6 +87,7 @@ export class SesionService {
           estado: false
         },
         {
+          id: '33Hacer ejercicio',
           titulo: 'Hacer ejercicio',
           descripcion: 'Ir al gym',
           fechaFin: new Date(),

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import {TaskFormComponent } from '../task-form/task-form.component';
 
 @Component({
   selector: 'app-edit-task',
@@ -24,7 +25,7 @@ export class EditTaskComponent {
 
   onEdit(event: any): void {
     event.stopPropagation();
-    //const dialogRef = this.dialog.open(EditTaskFormComponent);
+    const dialogRef = this.dialog.open(TaskFormComponent);
     console.log('edit');
 
     /*dialogRef.afterClosed().subscribe(() => {

@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -6,12 +7,13 @@ import { TaskService } from '../../services/task.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-add-task-form',
-  templateUrl: './add-task-form.component.html',
-  styleUrls: ['./add-task-form.component.css']
+  selector: 'add-task-form',
+  templateUrl: './task-form.component.html',
+  styleUrls: ['./task-form.component.css']
 })
-export class AddTaskFormComponent {
+export class TaskFormComponent {
 
+  public title:string = ''
 
   registrarse = new FormGroup({
     titulo: new FormControl('', [Validators.required]),
@@ -23,13 +25,14 @@ export class AddTaskFormComponent {
 
   constructor(
     private taskService: TaskService,
-    private dialogRef: MatDialogRef<AddTaskFormComponent>,
+    private dialogRef: MatDialogRef<TaskFormComponent>,
     private _snackBar: MatSnackBar
     ){}
 
 
   OnSubmit(){
     const newTask: Task = {
+      id: uuidv4(),
       titulo: this.registrarse.get('titulo')?.value!,
       descripcion: this.registrarse.get('descripcion')?.value!,
       fechaInicio: new Date(this.registrarse.get('fechaInicio')?.value!),
@@ -37,7 +40,7 @@ export class AddTaskFormComponent {
       estado: false,
     }
 
-    
+
     if(newTask.fechaInicio < newTask.fechaFin){
       this.taskService.addTaskToActiveUser(newTask);
     }else{
