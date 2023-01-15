@@ -4,7 +4,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Task } from '../../interface/task';
 import { TaskService } from '../../services/task.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { straightThroughStringTask } from 'simple-git/dist/src/lib/tasks/task';
 
 @Component({
   selector: 'app-add-task-form',
