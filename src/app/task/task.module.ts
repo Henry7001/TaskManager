@@ -15,6 +15,7 @@ import { ViewTaskComponent } from './views/view-task/view-task.component';
 import { DeleteTaskComponent } from './components/delete-task/delete-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { TerminadosComponent } from './views/terminados/terminados.component';
+import { ProximosComponent } from './views/proximos/proximos.component';
 
 
 
@@ -23,6 +24,7 @@ import { TerminadosComponent } from './views/terminados/terminados.component';
     DashboardComponent,
     TodayComponent,
     AddTaskComponent,
+    ProximosComponent,
     AddTaskFormComponent,
     TodosComponent,
     TaskListComponent,
