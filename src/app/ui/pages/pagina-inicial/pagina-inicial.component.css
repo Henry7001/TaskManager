@@ -25,12 +25,47 @@
 }
 
 .hero .image{
+  position: relative;
   margin: 0 auto;
   width: 90vw;
   height: fit-content;
 }
 
+.hero .image .blur{
+  position: absolute;
+  top: 0rem;
+  aspect-ratio: 1/1;
+  width: 50%;
+  border-radius: 50%;
+  background-color: #C4BDF2;
+  filter: blur(50px);
+}
+.hero .image .blur.shape2{
+  width: 65%;
+  left: -2vw;
+}
+
+.hero .image .blur.shape{
+  right: 0;
+  top: 15vw;
+  background-color: #F2CB05;
+  opacity: .3;
+}
+
+.hero .image .blur.shape::before{
+  content: '';
+  top: 10vw;
+  left: -10vw;
+  background-color:green;
+  z-index: 1;
+  width: 8rem;
+  height: 8rem;
+  position: absolute;
+}
+
 .hero .image img{
+  position: sticky;
+  z-index: 11;
   width: 100%;
   height: 100%;
 }
@@ -44,6 +79,7 @@
   display: flex;
   flex-direction: column;
   gap: 5rem;
+  position: relative;
 }
 
 
