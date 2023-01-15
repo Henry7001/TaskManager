@@ -13,11 +13,12 @@ export class TodosComponent implements OnInit{
   public tasks: Task[] | undefined= this.sesionService.getActiveUser()?.tasks;
 
   constructor(private sesionService: SesionService){
-    console.log(this.tasks);
+    
   }
 
   ngOnInit(): void {
     this.tasks = this.sesionService.getActiveUser()?.tasks
+    console.log(this.tasks);
   }
 
 

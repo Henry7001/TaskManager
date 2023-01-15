@@ -13,10 +13,13 @@ export class TerminadosComponent implements OnInit{
   public terminados: Task[] | undefined = this.tasks?.filter(task => task.estado === true);
 
   constructor(private sesionService: SesionService){
-    console.log(this.terminados);
+    
   }
 
   ngOnInit(): void {
     this.tasks = this.tasks?.filter(task => task.estado === true);
+    console.log(this.terminados);
   }
+
+  
 }
