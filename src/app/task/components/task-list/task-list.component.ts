@@ -8,6 +8,6 @@ import { Task } from '../../interface/task';
 })
 export class TaskListComponent {
 
-  @Input() tasks: Task[] | undefined;
+  @Input() tasks: Task[] | undefined = [];
 
 }

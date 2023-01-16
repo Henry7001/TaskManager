@@ -117,8 +117,8 @@ export class SesionService implements CanActivate {
 
   private activeUser: User | undefined;
 
-  initSessionStorage(): void {
-    this.activeUser = JSON.parse(sessionStorage.getItem('sesion') as string);
+  initLocalStorage(): void {
+    this.activeUser = JSON.parse(localStorage.getItem('sesion') as string);
     //console.log(this.activeUser);
 
   }
@@ -126,7 +126,7 @@ export class SesionService implements CanActivate {
   onNewUser(user: User): void {
     this.users.push(user);
     this.activeUser = user
-    sessionStorage.setItem('sesion', JSON.stringify(user));
+    localStorage.setItem('sesion', JSON.stringify(user));
   }
 
   login(nombre: string, contraseña: string): boolean {
@@ -137,7 +137,7 @@ export class SesionService implements CanActivate {
       if (user.nombre == nombre && user.contraseña == contraseña) {
         valid = true;
         this.activeUser = user
-        sessionStorage.setItem('sesion', JSON.stringify(user));
+        localStorage.setItem('sesion', JSON.stringify(user));
       }else{
         this._snackBar.open('Cedenciales inválidas.', 'Cerrar',{
           duration: 2000,
@@ -151,7 +151,7 @@ export class SesionService implements CanActivate {
 
   logout(): void {
     this.activeUser = undefined;
-    sessionStorage.removeItem('sesion')
+    localStorage.removeItem('sesion')
   }
 
   isActiveUser(): boolean {

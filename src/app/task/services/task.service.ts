@@ -7,43 +7,46 @@ import { User } from 'src/app/auth/interface/user';
 @Injectable({ providedIn: 'root' })
 export class TaskService {
   private user: User | undefined;
+  private allTask: Task[] | undefined;
+  private todayTask: Task[] | undefined;
+  private terminadosTask: Task[] | undefined;
+  private proximosTask: Task[] | undefined;
+
 
   constructor(private sesionService: SesionService) {
     this.user = this.sesionService.getActiveUser();
+    this.allTask = []
+    this.todayTask = []
+    this.terminadosTask = []
+    this.proximosTask = []
+    this.update();
   }
 
-  addTaskToActiveUser(task: Task): void {
-    if (this.sesionService.getActiveUser()) {
-      task['id'] = uuidv4();
-      this.user!.tasks?.push(task);
-    }
+  update() {
+    this.user = this.sesionService.getActiveUser();
+    this.allTask = this.user?.tasks?.filter((task) => !task.estado);
+    this.terminadosTask = this.user?.tasks?.filter(task => task.estado);
+    this.setTodayTask();
+    this.setProximosTask();
   }
 
-  getTasks() {
-    return this.user?.tasks?.filter((task) => !task.estado);;
-  }
-
-  getTodayTask() {
+  setTodayTask() {
     const formatTime = (time: Date) => {
       return new Date(time).toLocaleDateString("en-GB");
     }
 
     let hoy = formatTime(new Date());
 
-    return this.user?.tasks?.filter(task => formatTime(task.fechaInicio) === hoy || formatTime(task.fechaFin) === hoy)
+    this.todayTask = this.user?.tasks?.filter(task => formatTime(task.fechaInicio) === hoy || formatTime(task.fechaFin) === hoy)
       .filter(task => !task.estado);
   }
 
-  getTerminados() {
-    return this.user?.tasks?.filter(task => task.estado);
-  }
-
-  getProximos() {
+  setProximosTask() {
     let today = new Date();
     let nextWeek = new Date();
     nextWeek.setDate(nextWeek.getDate() + 7);
 
-    return this.user?.tasks?.filter(task => !task.estado)
+    this.proximosTask = this.user?.tasks?.filter(task => !task.estado)
       .filter(task => {
         console.log();
         if (new Date(task.fechaInicio) > today &&
@@ -55,6 +58,22 @@ export class TaskService {
       });
   }
 
+  getTasks() {
+    return this.allTask;
+  }
+
+  getTodayTask() {
+    return this.todayTask;
+  }
+
+  getTerminados() {
+    return this.terminadosTask;
+  }
+
+  getProximos() {
+    return this.proximosTask;
+  }
+
   getTaskToById(id: string) {
     let t: Task | undefined;
     let tasks = this.user!.tasks;
@@ -64,6 +83,14 @@ export class TaskService {
       }
     })
     return t
+  }
+
+  addTaskToActiveUser(task: Task): void {
+    if (this.sesionService.getActiveUser()) {
+      task['id'] = uuidv4();
+      this.user!.tasks?.push(task);
+    }
+    this.update();
   }
 
   editTask(id: string, options: Task) {
@@ -84,6 +111,7 @@ export class TaskService {
         tasks![indx].estado = !tasks![indx].estado
       }
     })
+    this.update();
   }
 
 }

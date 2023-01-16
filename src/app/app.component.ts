@@ -13,6 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private sesionService: SesionService){}
 
   ngOnInit(): void {
-    this.sesionService.initSessionStorage();
+    this.sesionService.initLocalStorage();
   }
 }
