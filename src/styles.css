@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Syne:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Syne:wght@400;500&display=swap");
 
 html,
 body {
@@ -6,26 +6,50 @@ body {
   margin: 0;
   height: 100%;
 }
-:root{
-  --primary: #6C63FF
+:root {
+  --primary: #6c63ff;
+  --white-bg: #f2f3f7;
+  --white: #4d4d4d;
+  --dark: #2f283b;
+  --thumb-bg: #949497;
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--thumb-bg);
+  border-radius: var(--radius);
+}
+::-webkit-scrollbar-thumb:active,
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark);
+}
+::-webkit-scrollbar-track {
+  background: #80808014;
+}
+
 body {
   margin: 0;
-  font-family: 'Roboto', "Helvetica Neue", sans-serif;
+  font-family: "Roboto", "Helvetica Neue", sans-serif;
   overflow-x: hidden;
 }
 
-h1,h2,h3,h4{
-  font-family: 'Syne', sans-serif;
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Syne", sans-serif;
 }
 
-h1{
+h1 {
   font-size: 5rem;
 }
-h2{
+h2 {
   font-size: 3rem;
   line-height: 3.5rem;
 }
-p{
+p {
   font-size: 1.12rem;
 }
