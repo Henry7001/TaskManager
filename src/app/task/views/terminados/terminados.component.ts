@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SesionService } from 'src/app/auth/services/sesion.service';
 import { Task } from '../../interface/task';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-terminados',
@@ -9,17 +10,14 @@ import { Task } from '../../interface/task';
 })
 export class TerminadosComponent implements OnInit{
 
-  public tasks: Task[] | undefined= this.sesionService.getActiveUser()?.tasks;
-  public terminados: Task[] | undefined = this.tasks?.filter(task => task.estado === true);
+  public tasks: Task[] | undefined= this.taskService.getTerminados();
 
-  constructor(private sesionService: SesionService){
-    
+  constructor(private taskService: TaskService){
+
   }
 
   ngOnInit(): void {
-    this.tasks = this.tasks?.filter(task => task.estado === true);
-    console.log(this.terminados);
   }
 
-  
+
 }

@@ -1,6 +1,6 @@
 <div class="card work">
   <div class="img-section" [ngClass]="{'complete': task!.estado}">
-    <mat-checkbox color="primary" class="checkbox" checked={{task!.estado}}>Completada</mat-checkbox>
+    <mat-checkbox color="primary" class="checkbox" checked={{task!.estado}} (change)="changeState()">Completada</mat-checkbox>
     <app-edit-task [idTask]="task!.id"></app-edit-task>
     <app-delete-task></app-delete-task>
   </div>

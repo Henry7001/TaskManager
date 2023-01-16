@@ -10,15 +10,14 @@ import { SesionService } from 'src/app/auth/services/sesion.service';
 })
 export class TodosComponent implements OnInit{
 
-  public tasks: Task[] | undefined= this.sesionService.getActiveUser()?.tasks;
+  public tasks: Task[] | undefined = this.taskService.getTasks();
 
-  constructor(private sesionService: SesionService){
-    
+  constructor(private taskService: TaskService){
+
   }
 
   ngOnInit(): void {
-    this.tasks = this.sesionService.getActiveUser()?.tasks
-    console.log(this.tasks);
+    // this.tasks = this.sesionService.getActiveUser()?.tasks?.filter((task) => !task.estado)
   }
 
 
