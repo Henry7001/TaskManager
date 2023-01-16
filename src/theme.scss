@@ -6,10 +6,10 @@
 
 @include mat.core();
 
-$frontend-angular-primary: mat.define-palette(mat.$blue-gray-palette, 900);
-$frontend-angular-accent: mat.define-palette(mat.$deep-purple-palette, A400);
+$frontend-angular-primary: mat.define-palette(mat.$deep-purple-palette, A400);
+$frontend-angular-accent: mat.define-palette(mat.$gray-palette, 900);
 
-$frontend-angular-warn: mat.define-palette(mat.$red-palette, 700);
+$frontend-angular-warn: mat.define-palette(mat.$red-palette, 400);
 
 $frontend-angular-theme: mat.define-light-theme((
   color: (

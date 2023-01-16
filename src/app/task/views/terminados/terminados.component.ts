@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-terminados',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./terminados.component.css']
 })
 export class TerminadosComponent {
+
+
+  constructor(public taskService: TaskService) {
+
+  }
+
+
 
 }

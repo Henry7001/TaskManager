@@ -1,0 +1,40 @@
+<div class="form">
+  <h2>{{tipo==='edit'?'Editar tarea':'Agregar nueva tarea'}}</h2>
+  <form [formGroup]="registrarse" (ngSubmit)="OnSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Titulo</mat-label>
+      <input matInput formControlName="titulo">
+      <mat-hint *ngIf="registrarse.controls['titulo'].invalid"> <span class="hint"> titulo
+          requerido.</span></mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>descripcion</mat-label>
+      <input type="text" matInput formControlName="descripcion">
+      <mat-hint *ngIf="registrarse.controls['descripcion'].invalid"><span class="hint">descripcion
+          requerida.</span></mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Fecha de inicio</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaInicio">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Fecha de Fin</mat-label>
+      <input matInput [matDatepicker]="picker1" formControlName="fechaFin">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+
+    <mat-dialog-actions align="end">
+      <button [disabled]="registrarse.invalid" type="submit" >{{tipo==='edit'?'Edit':'Add'}}</button>
+    </mat-dialog-actions>
+  </form>
+</div>

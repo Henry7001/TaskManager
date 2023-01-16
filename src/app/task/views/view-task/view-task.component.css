@@ -1,0 +1,45 @@
+.header{
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+.title{
+  font-size: 2rem;
+  color: #212121;
+}
+
+.info{
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: 1px solid #2121211f;
+  border-top: 1px solid #2121211f;
+}
+
+.dialog{
+  min-width: 50vw;
+}
+
+p{
+  font-size: 1em;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+h3{
+  padding-top: .5rem;
+  font-size: 1.5em;
+  color: #212121;
+}
+.desc{
+  color: #212121;
+}
+
+.options{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+}

@@ -1,0 +1,21 @@
+<div class="card work">
+  <div class="img-section" [ngClass]="{'complete': task!.estado}">
+    <mat-checkbox color="primary" class="checkbox" checked={{task!.estado}} (change)="changeState()">Completada</mat-checkbox>
+    <app-edit-task [idTask]="task!.id"></app-edit-task>
+    <app-delete-task [idTask]="task!.id"></app-delete-task>
+  </div>
+  <div class="card-desc" (click)="openTask()">
+    <div class="card-header">
+      <div class="card-title">Inicio: {{formatTime(task!.fechaInicio)}}</div>
+      <div class="card-title fin">Fin: {{formatTime(task!.fechaFin)}}</div>
+      <!-- <div class="card-menu">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div> -->
+
+    </div>
+    <div class="card-titulo">{{task!.titulo}}</div>
+    <p class="descripcion">{{task!.descripcion}}</p>
+  </div>
+</div>
