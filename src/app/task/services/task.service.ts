@@ -100,6 +100,11 @@ export class TaskService {
     })
   }
 
+  removeTask(id: string = ''){
+    this.user!.tasks = this.user!.tasks?.filter(task => task.id !== id);
+    this.update();
+  }
+
   changeState(id: string = '') {
 
     let tasks = this.user!.tasks;

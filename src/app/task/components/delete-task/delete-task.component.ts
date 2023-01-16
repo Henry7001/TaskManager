@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { TaskService } from '../../services/task.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 
 @Component({
   selector: 'app-delete-task',
@@ -19,9 +22,24 @@ import { Component } from '@angular/core';
 })
 export class DeleteTaskComponent {
 
+  @Input() idTask: string | undefined;
+
+  constructor(private dialog: MatDialog){
+
+  }
+
   onDelete(event:any):void{
     event.stopPropagation();
     console.log('delte');
+    // this.TaskService.removeTask(this.idTask);
+
+
+    const dialogRef = this.dialog.open(DialogDeleteComponent, {
+      data: {
+        idTask: this.idTask
+     },
+    });
+
   }
 
 }

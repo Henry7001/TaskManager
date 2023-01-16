@@ -48,7 +48,4 @@ export class EditTaskComponent{
 
   }
 
-  onClick(dialogRef: MatDialog){
-
-  }
 }
