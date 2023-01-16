@@ -98,6 +98,7 @@ export class TaskService {
         tasks![indx] = { ...options }
       }
     })
+    this.update();
   }
 
   removeTask(id: string = ''){
