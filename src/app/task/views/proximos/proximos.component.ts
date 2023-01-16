@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { SesionService } from 'src/app/auth/services/sesion.service';
-import { Task } from '../../interface/task';
+import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 
 @Component({
@@ -8,16 +6,10 @@ import { TaskService } from '../../services/task.service';
   templateUrl: './proximos.component.html',
   styleUrls: ['./proximos.component.css']
 })
-export class ProximosComponent implements OnInit{
+export class ProximosComponent{
 
-  public tasks: Task[] | undefined = this.taskService.getProximos();
-
-  constructor(private taskService: TaskService){
+  constructor(public taskService: TaskService){
 
   }
-
-  ngOnInit(): void {
-  }
-
 
 }

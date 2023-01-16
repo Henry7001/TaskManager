@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Task } from '../../interface/task';
-import { SesionService } from '../../../auth/services/sesion.service';
+import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 
 @Component({
@@ -9,15 +7,10 @@ import { TaskService } from '../../services/task.service';
   styleUrls: ['./today.component.css']
 })
 
-export class TodayComponent implements OnInit{
-  public tasks: Task[] | undefined= this.taskService.getTodayTask();
+export class TodayComponent {
 
 
-  constructor(private taskService: TaskService){
-  }
-
-
-  ngOnInit(): void {
+  constructor(public taskService: TaskService) {
   }
 
 

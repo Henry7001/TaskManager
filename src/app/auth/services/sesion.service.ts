@@ -2,11 +2,22 @@ import { Injectable } from '@angular/core';
 import { User } from '../interface/user';
 import { Task } from '../../task/interface/task';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class SesionService {
+export class SesionService implements CanActivate {
 
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar, private router: Router) { }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+
+    if(!this.activeUser){
+      this.router.navigate(['/'])
+    }
+
+    return true
+  }
 
   private users: User[] = [
     {

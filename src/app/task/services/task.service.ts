@@ -7,12 +7,9 @@ import { User } from 'src/app/auth/interface/user';
 @Injectable({ providedIn: 'root' })
 export class TaskService {
   private user: User | undefined;
-  private allTask: Task[] | undefined;
-
 
   constructor(private sesionService: SesionService) {
     this.user = this.sesionService.getActiveUser();
-    this.allTask = this.user?.tasks?.filter((task) => !task.estado)
   }
 
   addTaskToActiveUser(task: Task): void {
@@ -23,7 +20,7 @@ export class TaskService {
   }
 
   getTasks() {
-    return this.user?.tasks;
+    return this.user?.tasks?.filter((task) => !task.estado);;
   }
 
   getTodayTask() {

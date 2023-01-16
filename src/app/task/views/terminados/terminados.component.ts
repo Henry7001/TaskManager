@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { SesionService } from 'src/app/auth/services/sesion.service';
-import { Task } from '../../interface/task';
+import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 
 @Component({
@@ -8,16 +6,13 @@ import { TaskService } from '../../services/task.service';
   templateUrl: './terminados.component.html',
   styleUrls: ['./terminados.component.css']
 })
-export class TerminadosComponent implements OnInit{
+export class TerminadosComponent {
 
-  public tasks: Task[] | undefined= this.taskService.getTerminados();
 
-  constructor(private taskService: TaskService){
+  constructor(public taskService: TaskService) {
 
   }
 
-  ngOnInit(): void {
-  }
 
 
 }
