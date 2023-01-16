@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interface/user';
-import { Task } from '../../task/interface/task';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SesionService implements CanActivate {
+
+  loginEvent = new Subject<void>();
 
   constructor(private _snackBar: MatSnackBar, private router: Router) { }
 
@@ -127,6 +128,7 @@ export class SesionService implements CanActivate {
     this.users.push(user);
     this.activeUser = user
     localStorage.setItem('sesion', JSON.stringify(user));
+    this.loginEvent.next();
   }
 
   login(nombre: string, contraseña: string): boolean {
@@ -145,7 +147,7 @@ export class SesionService implements CanActivate {
         );
       }
     })
-
+    this.loginEvent.next();
     return valid
   }
 

@@ -15,10 +15,7 @@ export class TaskService {
 
   constructor(private sesionService: SesionService) {
     this.user = this.sesionService.getActiveUser();
-    this.allTask = []
-    this.todayTask = []
-    this.terminadosTask = []
-    this.proximosTask = []
+    this.sesionService.loginEvent.subscribe(() => this.update());
     this.update();
   }
 
