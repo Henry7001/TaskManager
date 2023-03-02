@@ -12,33 +12,28 @@ export class httpService {
 
   constructor(private http: HttpClient) { }
 
-    login(correo: string, contrasena: string): Observable<any> {
-        const url = `${this.apiUrl}/Auth/login`;
-        const body = { correo, contrasena };
+    login(correo: string, contraseña: string): Observable<any> {
         const httpOptions = {
           headers: new HttpHeaders({
             'Content-Type':  'application/json',
             'Access-Control-Allow-Origin': '*'
           })
         };
-        return this.http.post(url, body, httpOptions);
+        const url = `${this.apiUrl}/Auth/login?correo=${correo}&contrase%C3%B1a=${contraseña}`;
+        console.log(url);
+        return this.http.post(url, "", httpOptions);
     }
 
     register(usuario: User): Observable<any> {
-      const url = `${this.apiUrl}/Auth/crearUsuario`;
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type':  'application/json',
           'Access-Control-Allow-Origin': '*'
         })
       };
-      const body = {
-        nombre: usuario.nombre.toString(),
-        correo: usuario.correo.toString(),
-        contraseña: usuario.contraseña.toString()
-      }
-      console.log(body);
-      return this.http.post(url, body, httpOptions);
+      const url = `${this.apiUrl}/Auth/crearUsuario?nombre=${usuario.nombre.toString()}&correo=${usuario.correo.toString()}&contrase%C3%B1a=${usuario.contraseña.toString()}`;
+      console.log(url);
+      return this.http.post(url, "", httpOptions);
     }
   
     

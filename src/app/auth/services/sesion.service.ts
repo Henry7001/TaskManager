@@ -35,12 +35,6 @@ export class SesionService implements CanActivate {
           estado: true,
         }
       ]
-    },
-    {
-      nombre: 'admin',
-      correo: 'admin@gmail.com',
-      contraseña: 'admin',
-      tasks: []
     }
   ]
 

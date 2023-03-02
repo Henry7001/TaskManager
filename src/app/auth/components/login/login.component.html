@@ -13,9 +13,9 @@
     <form [formGroup]="sesion" (ngSubmit)="OnSubmit()">
 
       <mat-form-field appearance="fill">
-        <mat-label>Nombre de usuario</mat-label>
-        <input matInput formControlName="nombre">
-        <mat-hint *ngIf="sesion.controls['nombre'].invalid"> <span class="hint">Nombre requerido.</span></mat-hint>
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput formControlName="correo">
+        <mat-hint *ngIf="sesion.controls['correo'].invalid"> <span class="hint">Correo requerido.</span></mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">

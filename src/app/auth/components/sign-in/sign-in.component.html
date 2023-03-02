@@ -8,10 +8,9 @@
     <h2>Registrarse</h2>
     <form [formGroup]="registrarse" (ngSubmit)="OnSubmit()">
       <mat-form-field appearance="fill">
-        <mat-label>Nombre de usuario</mat-label>
+        <mat-label>Nombres</mat-label>
         <input matInput formControlName="nombre">
-        <mat-hint *ngIf="registrarse.controls['nombre'].invalid"> <span class="hint"> Usuario
-            requerido.</span></mat-hint>
+        <mat-hint *ngIf="registrarse.controls['nombre'].invalid"> <span class="hint"> Nombres requeridos.</span></mat-hint>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
