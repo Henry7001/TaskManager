@@ -3,13 +3,14 @@ import { User } from '../interface/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { httpService } from './http.service';
 
 @Injectable({ providedIn: 'root' })
 export class SesionService implements CanActivate {
 
   loginEvent = new Subject<void>();
 
-  constructor(private _snackBar: MatSnackBar, private router: Router) { }
+  constructor(private _snackBar: MatSnackBar, private router: Router, private api: httpService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 
