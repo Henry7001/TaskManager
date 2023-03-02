@@ -10,6 +10,9 @@ import { UiModule } from './ui/ui.module';
 import { AuthModule } from './auth/auth.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { TaskModule } from './task/task.module';
+import { httpService } from './auth/services/http.service';
+import { HttpClient, HttpBackend } from '@angular/common/http';
+import { User } from './auth/interface/user';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,7 @@ import { TaskModule } from './task/task.module';
     NotificationsModule,
     TaskModule
   ],
-  providers: [],
+  providers: [httpService, HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
