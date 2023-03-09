@@ -38,11 +38,35 @@ export class httpService {
 
     creaTarea(tarea: Task, id_usuario: string): Observable<any> {
 
-      const url = `${this.apiUrl}/Auth/crearUsuario?id_usuario=${id_usuario}&titulo=${tarea.titulo.toString()}&descripcion=${tarea.descripcion.toString()}&fecha_fin=${tarea.fechaFin.toString()}&fecha_inicio=${tarea.fechaInicio.toString()}&estado=${tarea.estado.toString()}`
-      console.log(url);
-      return this.http.post(url, "", this.httpOptions);
+      return this.http.post(`${this.apiUrl}/Task/crear`, {
+        "id_usuario": id_usuario,
+        "titulo": tarea.titulo,
+        "descripcion": tarea.descripcion,
+        "fechaFin": tarea.fechaFin,
+        "fechaInicio": tarea.fechaInicio
+      } , this.httpOptions);
     }
 
+    editarTarea(tarea: Task, id_tarea: string): Observable<any> {
 
+      return this.http.put(`${this.apiUrl}/Task/editar`, {
+        "id": id_tarea,
+        "titulo": tarea.titulo,
+        "descripcion": tarea.descripcion,
+        "fechaFin": tarea.fechaFin,
+        "fechaInicio": tarea.fechaInicio,
+        "estado": tarea.estado
+      } , this.httpOptions);
+    }
+
+    EliminarTarea(id_tarea: string): Observable<any> {
+
+      return this.http.delete(`${this.apiUrl}/Task/eliminar?id=${id_tarea}`, {});
+    }
+
+    getTareas(id_usuario: string): Observable<any> {
+
+      return this.http.get(`${this.apiUrl}/Task/get?user_id=${id_usuario}`,{});
+    }
 
 }

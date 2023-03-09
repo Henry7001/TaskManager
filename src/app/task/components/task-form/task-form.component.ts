@@ -15,6 +15,7 @@ export class TaskFormComponent {
 
   private idTask: string = '';
   public tipo: 'add' | 'edit' = 'add';
+  public loadingD: boolean = false;
 
   registrarse : FormGroup;
 
@@ -40,7 +41,10 @@ export class TaskFormComponent {
     }
 
 
-  OnSubmit(){
+  async OnSubmit(){
+    this.loadingD = true;
+
+    let state:boolean = false;
 
     const task: Task = {
       id: this.idTask,
@@ -54,9 +58,9 @@ export class TaskFormComponent {
     if(task.fechaInicio < task.fechaFin){
 
       if(this.tipo==='edit'){
-        this.taskService.editTask(this.idTask,task);
+        state = await this.taskService.editTask(this.idTask,task);
       }else{
-        this.taskService.addTaskToActiveUser(task);
+        state = await this.taskService.addTaskToActiveUser(task);
       }
 
     }else{
@@ -64,10 +68,13 @@ export class TaskFormComponent {
         duration: 2000,
       }
       );
+      this.loadingD = false;
     }
 
-    this.dialogRef.close();
+    if(state){
+      this.dialogRef.close();
+      this.loadingD = false;
+    }
   }
-
 
 }

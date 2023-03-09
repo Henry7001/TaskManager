@@ -10,7 +10,7 @@ import { TaskFormComponent } from '../task-form/task-form.component';
 })
 export class AddTaskComponent {
 
-  constructor(private dialog: MatDialog, private sesionService: SesionService){}
+  constructor(private dialog: MatDialog){}
 
   addTask():void{
     //console.log('add task');

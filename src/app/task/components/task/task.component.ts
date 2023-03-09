@@ -27,6 +27,6 @@ export class TaskComponent {
   }
 
   changeState(){
-    this.taskService.changeState(this.task?.id)
+    this.taskService.changeState(this.task!)
   }
 }

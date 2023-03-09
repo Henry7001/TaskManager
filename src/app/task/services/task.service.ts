@@ -1,19 +1,22 @@
-import { v4 as uuidv4 } from 'uuid';
 import { Injectable } from '@angular/core';
 import { Task } from '../interface/task';
 import { SesionService } from '../../auth/services/sesion.service';
 import { ActiveUser, User } from 'src/app/auth/interface/user';
+import { httpService } from 'src/app/auth/services/http.service';
+import Swal from 'sweetalert2';
+import  confetti  from 'canvas-confetti';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
-  private user: User | ActiveUser | undefined;
-  private allTask: Task[] | undefined;
+  public loading: boolean = false;
+  private user: ActiveUser | undefined;
+  private allTask: Task[] | undefined = [];
   private todayTask: Task[] | undefined;
   private terminadosTask: Task[] | undefined;
   private proximosTask: Task[] | undefined;
 
 
-  constructor(private sesionService: SesionService) {
+  constructor(private sesionService: SesionService, private api: httpService) {
     this.user = this.sesionService.getActiveUser();
     this.sesionService.loginEvent.subscribe(() => this.update());
     this.update();
@@ -21,10 +24,28 @@ export class TaskService {
 
   update() {
     this.user = this.sesionService.getActiveUser();
-    // this.allTask = this.user?.tasks?.filter((task) => !task.estado);
-    // this.terminadosTask = this.user?.tasks?.filter(task => task.estado);
-    this.setTodayTask();
-    this.setProximosTask();
+
+    if(this.user){
+      this.loading = true;
+      this.api.getTareas(this.user?.uid).subscribe(
+        (data: any)=>{
+          let tasks: Task[] = data.result;
+          this.allTask = tasks?.filter((task) => !task.estado);
+          this.terminadosTask = tasks?.filter(task => task.estado);
+          this.setTodayTask();
+          this.setProximosTask();
+          this.loading = false;
+        },
+        (error: any) => {
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error?.error?.detail || 'parace que hubo un error...',
+          })
+        }
+      )
+    }
   }
 
   setTodayTask() {
@@ -34,8 +55,28 @@ export class TaskService {
 
     let hoy = formatTime(new Date());
 
-    // this.todayTask = this.user?.tasks?.filter(task => formatTime(task.fechaInicio) === hoy || formatTime(task.fechaFin) === hoy)
-    //   .filter(task => !task.estado);
+    var colors = ['#000000', '#6c63ff'];
+    if(this.allTask?.length == 0){
+      confetti({
+        zIndex: 1111,
+        particleCount: 100,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: colors
+      });
+      confetti({
+        zIndex:1111,
+        particleCount: 100,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: colors
+      });
+    }
+
+    this.todayTask = this.allTask?.filter(task => formatTime(task.fechaInicio) === hoy || formatTime(task.fechaFin) === hoy)
+       .filter(task => !task.estado);
   }
 
   setProximosTask() {
@@ -43,16 +84,16 @@ export class TaskService {
     let nextWeek = new Date();
     nextWeek.setDate(nextWeek.getDate() + 7);
 
-    // this.proximosTask = this.user?.tasks?.filter(task => !task.estado)
-    //   .filter(task => {
-    //     console.log();
-    //     if (new Date(task.fechaInicio) > today &&
-    //       new Date(task.fechaFin) <= nextWeek
-    //     ) {
-    //       return task;
-    //     }
-    //     return;
-    //   });
+    this.proximosTask = this.allTask?.filter(task => !task.estado)
+      .filter(task => {
+        console.log();
+        if (new Date(task.fechaInicio) > today &&
+          new Date(task.fechaFin) <= nextWeek
+        ) {
+          return task;
+        }
+        return;
+      });
   }
 
   getTasks() {
@@ -73,48 +114,90 @@ export class TaskService {
 
   getTaskToById(id: string) {
     let t: Task | undefined;
-    // let tasks = this.user!.tasks;
-    // tasks!.forEach((task) => {
-    //   if (task.id === id) {
-    //     t = task
-    //   }
-    // })
+    let tasks = this.allTask;
+    tasks!.forEach((task) => {
+      if (task.id === id) {
+        t = task
+      }
+    })
     return t
   }
 
-  addTaskToActiveUser(task: Task): void {
-    if (this.sesionService.getActiveUser()) {
-      task['id'] = uuidv4();
-      // this.user!.tasks?.push(task);
-    }
-    this.update();
+  addTaskToActiveUser(task: Task): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      if (this.user) {
+
+        this.api.creaTarea(task, this.user?.uid).subscribe(
+          (data: any)=>{
+            console.log(data);
+            this.allTask?.push(task)
+            this.update();
+            resolve(true);
+          },
+          (error: any) => {
+            console.log(error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: error.error.detail || 'parace que hubo un error...',
+            })
+            reject(false); // Rechazar la promesa con false
+          }
+        )
+      }
+    });
   }
 
-  editTask(id: string, options: Task) {
+  editTask(id: string, options: Task): Promise<boolean> {
 
-    // let tasks = this.user!.tasks;
-    // tasks!.forEach((task, indx) => {
-    //   if (task.id === id) {
-    //     tasks![indx] = { ...options }
-    //   }
-    // })
-    this.update();
+    return new Promise((resolve, reject) => {
+      if (this.user) {
+
+        this.api.editarTarea(options, id).subscribe(
+          (data: any)=>{
+            console.log(data);
+            this.update();
+            resolve(true);
+          },
+          (error: any) => {
+            console.log(error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: error.error?.detail || 'parace que hubo un error...',
+            })
+            reject(false);// Rechazar la promesa con false
+          }
+        )
+      }
+    });
+
   }
 
   removeTask(id: string = ''){
-    // this.user!.tasks = this.user!.tasks?.filter(task => task.id !== id);
-    this.update();
+    this.api.EliminarTarea( id).subscribe(
+      (data: any)=>{
+        console.log(data);
+        this.update();
+      },
+      (error: any) => {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error?.detail || 'parace que hubo un error...',
+        })// Rechazar la promesa con false
+      }
+    )
   }
 
-  changeState(id: string = '') {
+  changeState(task: Task ) {
 
-    // let tasks = this.user!.tasks;
-    // tasks!.forEach((task, indx) => {
-    //   if (task.id === id) {
-    //     tasks![indx].estado = !tasks![indx].estado
-    //   }
-    // })
-    this.update();
+    task.estado = !task.estado;
+
+    this.editTask(task.id, task);
+
   }
 
 }
+
