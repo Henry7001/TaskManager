@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { SesionService } from '../../services/sesion.service';
-import { httpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-login',
@@ -19,16 +17,15 @@ export class LoginComponent {
 
   constructor(
     private sesionService: SesionService,
-    private httpService: httpService,
     private router: Router,
     private dialogRef: MatDialogRef<LoginComponent>) { }
 
-  OnSubmit() {
+  async OnSubmit() {
 
     let correo = this.sesion.get('correo')?.value!
     let contraseña = this.sesion.get('contraseña')?.value!
 
-    let valid = this.sesionService.login(correo, contraseña);
+    let valid = await this.sesionService.login(correo, contraseña);
 
     if (valid) {
       this.dialogRef.close();

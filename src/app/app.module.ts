@@ -12,13 +12,15 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { TaskModule } from './task/task.module';
 import { httpService } from './auth/services/http.service';
 import { HttpClient, HttpBackend } from '@angular/common/http';
-import { User } from './auth/interface/user';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -30,7 +32,7 @@ import { User } from './auth/interface/user';
     NotificationsModule,
     TaskModule
   ],
-  providers: [httpService, HttpClient],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

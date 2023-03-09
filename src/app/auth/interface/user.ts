@@ -5,3 +5,9 @@ export interface User {
   correo: string,
   tasks?: Task[]
 }
+
+export interface ActiveUser{
+  nombre: string,
+  uid: string,
+  token: string
+}

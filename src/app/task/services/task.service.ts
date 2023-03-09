@@ -2,11 +2,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { Injectable } from '@angular/core';
 import { Task } from '../interface/task';
 import { SesionService } from '../../auth/services/sesion.service';
-import { User } from 'src/app/auth/interface/user';
+import { ActiveUser, User } from 'src/app/auth/interface/user';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
-  private user: User | undefined;
+  private user: User | ActiveUser | undefined;
   private allTask: Task[] | undefined;
   private todayTask: Task[] | undefined;
   private terminadosTask: Task[] | undefined;
@@ -21,8 +21,8 @@ export class TaskService {
 
   update() {
     this.user = this.sesionService.getActiveUser();
-    this.allTask = this.user?.tasks?.filter((task) => !task.estado);
-    this.terminadosTask = this.user?.tasks?.filter(task => task.estado);
+    // this.allTask = this.user?.tasks?.filter((task) => !task.estado);
+    // this.terminadosTask = this.user?.tasks?.filter(task => task.estado);
     this.setTodayTask();
     this.setProximosTask();
   }
@@ -34,8 +34,8 @@ export class TaskService {
 
     let hoy = formatTime(new Date());
 
-    this.todayTask = this.user?.tasks?.filter(task => formatTime(task.fechaInicio) === hoy || formatTime(task.fechaFin) === hoy)
-      .filter(task => !task.estado);
+    // this.todayTask = this.user?.tasks?.filter(task => formatTime(task.fechaInicio) === hoy || formatTime(task.fechaFin) === hoy)
+    //   .filter(task => !task.estado);
   }
 
   setProximosTask() {
@@ -43,16 +43,16 @@ export class TaskService {
     let nextWeek = new Date();
     nextWeek.setDate(nextWeek.getDate() + 7);
 
-    this.proximosTask = this.user?.tasks?.filter(task => !task.estado)
-      .filter(task => {
-        console.log();
-        if (new Date(task.fechaInicio) > today &&
-          new Date(task.fechaFin) <= nextWeek
-        ) {
-          return task;
-        }
-        return;
-      });
+    // this.proximosTask = this.user?.tasks?.filter(task => !task.estado)
+    //   .filter(task => {
+    //     console.log();
+    //     if (new Date(task.fechaInicio) > today &&
+    //       new Date(task.fechaFin) <= nextWeek
+    //     ) {
+    //       return task;
+    //     }
+    //     return;
+    //   });
   }
 
   getTasks() {
@@ -73,47 +73,47 @@ export class TaskService {
 
   getTaskToById(id: string) {
     let t: Task | undefined;
-    let tasks = this.user!.tasks;
-    tasks!.forEach((task) => {
-      if (task.id === id) {
-        t = task
-      }
-    })
+    // let tasks = this.user!.tasks;
+    // tasks!.forEach((task) => {
+    //   if (task.id === id) {
+    //     t = task
+    //   }
+    // })
     return t
   }
 
   addTaskToActiveUser(task: Task): void {
     if (this.sesionService.getActiveUser()) {
       task['id'] = uuidv4();
-      this.user!.tasks?.push(task);
+      // this.user!.tasks?.push(task);
     }
     this.update();
   }
 
   editTask(id: string, options: Task) {
 
-    let tasks = this.user!.tasks;
-    tasks!.forEach((task, indx) => {
-      if (task.id === id) {
-        tasks![indx] = { ...options }
-      }
-    })
+    // let tasks = this.user!.tasks;
+    // tasks!.forEach((task, indx) => {
+    //   if (task.id === id) {
+    //     tasks![indx] = { ...options }
+    //   }
+    // })
     this.update();
   }
 
   removeTask(id: string = ''){
-    this.user!.tasks = this.user!.tasks?.filter(task => task.id !== id);
+    // this.user!.tasks = this.user!.tasks?.filter(task => task.id !== id);
     this.update();
   }
 
   changeState(id: string = '') {
 
-    let tasks = this.user!.tasks;
-    tasks!.forEach((task, indx) => {
-      if (task.id === id) {
-        tasks![indx].estado = !tasks![indx].estado
-      }
-    })
+    // let tasks = this.user!.tasks;
+    // tasks!.forEach((task, indx) => {
+    //   if (task.id === id) {
+    //     tasks![indx].estado = !tasks![indx].estado
+    //   }
+    // })
     this.update();
   }
 

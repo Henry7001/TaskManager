@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { User } from '../interface/user';
+import { ActiveUser, User } from '../interface/user';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import { httpService } from './http.service';
+import Swal from 'sweetalert2';
 
 @Injectable({ providedIn: 'root' })
 export class SesionService implements CanActivate {
@@ -14,7 +15,7 @@ export class SesionService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
 
-    if(!this.activeUser){
+    if (!this.activeUser) {
       this.router.navigate(['/'])
     }
 
@@ -39,7 +40,7 @@ export class SesionService implements CanActivate {
     }
   ]
 
-  private activeUser: User | undefined;
+  private activeUser: ActiveUser | undefined;
 
   initLocalStorage(): void {
     this.activeUser = JSON.parse(localStorage.getItem('sesion') as string);
@@ -47,31 +48,52 @@ export class SesionService implements CanActivate {
 
   }
 
-  onNewUser(user: User): void {
-    this.users.push(user);
-    this.activeUser = user
-    localStorage.setItem('sesion', JSON.stringify(user));
-    this.loginEvent.next();
+  onNewUser(user: User): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.api.register(user).subscribe(
+        (data: any) => {
+          this.activeUser = { nombre: data.nombre, uid: data.uid, token: data.token };
+          localStorage.setItem('sesion', JSON.stringify(this.activeUser));
+          this.loginEvent.next();
+          resolve(true); // Resolver la promesa con true
+        },
+        (error: any) => {
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.error.detail || 'parace que hubo un error...',
+          })
+          reject(false); // Rechazar la promesa con false
+        }
+      )
+    });
   }
 
-  login(nombre: string, contraseña: string): boolean {
 
-    let valid = false;
+  login(correo: string, contraseña: string):  Promise<boolean>  {
 
-    this.users.forEach((user) => {
-      if (user.nombre == nombre && user.contraseña == contraseña) {
-        valid = true;
-        this.activeUser = user
-        localStorage.setItem('sesion', JSON.stringify(user));
-      }else{
-        this._snackBar.open('Cedenciales inválidas.', 'Cerrar',{
-          duration: 2000,
+    return new Promise((resolve, reject) => {
+      this.api.login(correo, contraseña).subscribe(
+        (data: any) => {
+          // this.activeUser = user;
+          console.log(data);
+          this.activeUser = { nombre: data.nombre, uid: data.uid, token: data.token };
+          localStorage.setItem('sesion', JSON.stringify(this.activeUser));
+          this.loginEvent.next();
+          resolve(true); // Resolver la promesa con true
+        },
+        (error: any) => {
+          console.log(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.error.detail || 'parace que hubo un error...',
+          })
+          reject(false); // Rechazar la promesa con false
         }
-        );
-      }
-    })
-    this.loginEvent.next();
-    return valid
+      )
+    });
   }
 
   logout(): void {
@@ -83,7 +105,7 @@ export class SesionService implements CanActivate {
     return !!this.activeUser;
   }
 
-  getActiveUser(): User | undefined {
+  getActiveUser(): ActiveUser | undefined {
     return this.activeUser;
   }
 
