@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpHandler, HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/auth/interface/user';
 import { Task } from 'src/app/task/interface/task';
 
@@ -10,14 +10,19 @@ import { Task } from 'src/app/task/interface/task';
 })
 export class httpService {
   private apiUrl = 'https://localhost:7063';
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Access-Control-Allow-Origin': '*'
-    })
-  };
+  private httpOptions: Object = new Object();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('sesion') as string)?.token}`
+      })
+    };
+    console.log(this.httpOptions);
+
+  }
 
     login(correo: string, contraseña: string): Observable<any> {
 
@@ -61,12 +66,12 @@ export class httpService {
 
     EliminarTarea(id_tarea: string): Observable<any> {
 
-      return this.http.delete(`${this.apiUrl}/Task/eliminar?id=${id_tarea}`, {});
+      return this.http.delete(`${this.apiUrl}/Task/eliminar?id=${id_tarea}`, this.httpOptions);
     }
 
     getTareas(id_usuario: string): Observable<any> {
 
-      return this.http.get(`${this.apiUrl}/Task/get?user_id=${id_usuario}`,{});
+      return this.http.get(`${this.apiUrl}/Task/get?user_id=${id_usuario}`, this.httpOptions);
     }
 
 }

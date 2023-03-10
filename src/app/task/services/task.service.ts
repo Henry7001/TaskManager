@@ -18,12 +18,13 @@ export class TaskService {
 
   constructor(private sesionService: SesionService, private api: httpService) {
     this.user = this.sesionService.getActiveUser();
+    console.log(this.user);
+
     this.sesionService.loginEvent.subscribe(() => this.update());
     this.update();
   }
 
   update() {
-    this.user = this.sesionService.getActiveUser();
 
     if(this.user){
       this.loading = true;
