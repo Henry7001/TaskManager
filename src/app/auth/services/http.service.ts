@@ -9,7 +9,7 @@ import { Task } from 'src/app/task/interface/task';
   providedIn: 'root'
 })
 export class httpService {
-  private apiUrl = 'https://localhost:7063';
+  private apiUrl = 'https://taskmanagerbackend.up.railway.app';
   private httpOptions: Object = new Object();
 
   constructor(private http: HttpClient) {
