@@ -92,6 +92,10 @@
 
     <app-add-task></app-add-task>
 
+    <div class="loading" *ngIf="taskService.loading">
+      <mat-spinner [diameter]="40"></mat-spinner>
+    </div>
+
   </mat-drawer-container>
 
 </section>

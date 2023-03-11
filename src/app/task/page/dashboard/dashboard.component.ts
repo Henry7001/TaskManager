@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { SesionService } from 'src/app/auth/services/sesion.service';
+import { TaskService } from '../../services/task.service';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,5 +10,10 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   showFiller = false;
+
+  constructor(public taskService: TaskService) {
+  }
+
+
 }
 

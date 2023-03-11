@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {  MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SesionService } from '../../services/sesion.service';
-import { httpService } from '../../services/http.service';
 import { User } from '../../interface/user';
 @Component({
   selector: 'app-sign-in',
@@ -20,11 +18,11 @@ export class SignInComponent {
 
   constructor(
     private sesionService: SesionService,
-    private api: httpService,
+
     private router: Router,
     private dialogRef: MatDialogRef<SignInComponent>) { }
 
-  OnSubmit() {
+  async OnSubmit() {
 
     const newUser: User = {
       nombre: this.registrarse.get('nombre')?.value!,
@@ -33,14 +31,17 @@ export class SignInComponent {
       tasks: []
     }
 
-    this.sesionService.onNewUser(newUser)
-    console.log(newUser);
-      this.api.register(newUser)
-        .subscribe( (data: any) => {
-          console.log(data);
-        });
+    const state = await this.sesionService.onNewUser(newUser)
 
-    this.dialogRef.close();
-    this.router.navigate(['/dashboard']);
+    if(state){
+      console.log(newUser);
+        // this.api.register(newUser)
+        //   .subscribe( (data: any) => {
+        //     console.log(data);
+        //   });
+
+      this.dialogRef.close();
+      this.router.navigate(['/dashboard']);
+    }
   }
 }
